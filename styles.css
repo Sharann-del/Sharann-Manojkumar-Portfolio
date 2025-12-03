@@ -576,46 +576,6 @@ section {
     margin: 0 auto;
 }
 
-.about-image-wrapper {
-    position: sticky;
-    top: 120px;
-}
-
-.about-image-container {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-}
-
-.about-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    filter: grayscale(30%) contrast(1.1);
-    transition: var(--transition);
-}
-
-.about-image-container:hover .about-image {
-    filter: grayscale(0%) contrast(1.2);
-    transform: scale(1.05);
-}
-
-.about-image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
-    opacity: 0;
-    transition: var(--transition);
-}
-
-.about-image-container:hover .about-image-overlay {
-    opacity: 1;
-}
-
 .about-text {
     font-size: 1.1rem;
     line-height: 1.9;
