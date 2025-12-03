@@ -1,3 +1,54 @@
+// Create Particle Effect
+function createParticles() {
+    const particlesContainer = document.getElementById('particles');
+    if (!particlesContainer) return;
+
+    const particleCount = 50;
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.cssText = `
+            position: absolute;
+            width: ${Math.random() * 3 + 1}px;
+            height: ${Math.random() * 3 + 1}px;
+            background: rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2});
+            border-radius: 50%;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            animation: particleMove ${Math.random() * 20 + 10}s infinite linear;
+            animation-delay: ${Math.random() * 5}s;
+        `;
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// Add particle animation CSS
+const particleStyle = document.createElement('style');
+particleStyle.textContent = `
+    @keyframes particleMove {
+        0% {
+            transform: translate(0, 0);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(particleStyle);
+
+// Initialize particles on load
+document.addEventListener('DOMContentLoaded', () => {
+    createParticles();
+});
+
 // Mobile Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
