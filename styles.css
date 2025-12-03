@@ -27,7 +27,8 @@ body {
     background-color: var(--primary-black);
     color: var(--primary-white);
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow: hidden;
+    height: 100vh;
 }
 
 .container {
@@ -271,8 +272,27 @@ body {
 
 /* Section Styles */
 section {
+    min-height: 100vh;
+    max-height: 100vh;
     padding: 6rem 0;
     position: relative;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+section.active {
+    display: block;
+    opacity: 1;
+}
+
+#home.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .section-title {
@@ -745,18 +765,19 @@ section {
 /* Resume Section */
 .resume-section {
     background-color: var(--secondary-black);
-    min-height: 50vh;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .resume-content {
     text-align: center;
-    max-width: 600px;
+    max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
 }
 
-.resume-placeholder {
+.resume-description {
     font-size: 1.2rem;
     color: var(--text-gray);
     margin-bottom: 2rem;
@@ -765,6 +786,25 @@ section {
 .resume-actions {
     display: flex;
     justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.resume-preview {
+    width: 100%;
+    height: 80vh;
+    border: 1px solid var(--border-gray);
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: var(--primary-black);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.resume-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 .btn:disabled {
@@ -918,10 +958,8 @@ section {
     }
 }
 
-/* Smooth Scroll Animation */
-@media (prefers-reduced-motion: no-preference) {
-    html {
-        scroll-behavior: smooth;
-    }
+/* Prevent smooth scroll for page navigation */
+html {
+    scroll-behavior: auto;
 }
 
