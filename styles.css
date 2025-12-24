@@ -653,24 +653,25 @@ section {
     margin: 0 auto;
 }
 
-/* Align Node.js (9th) directly below HTML (7th) and PostgreSQL (10th) directly below CSS (8th) */
-/* Find which column HTML and CSS are in, then place Node.js and PostgreSQL in the same columns */
-.skill-card:nth-child(7) {
-    /* HTML - will be in first available column */
-}
-
-.skill-card:nth-child(8) {
-    /* CSS - will be in next column */
-}
-
-.skill-card:nth-child(9) {
-    /* Node.js - align with HTML's column */
-    grid-column: span 1;
-}
-
-.skill-card:nth-child(10) {
-    /* PostgreSQL - align with CSS's column */
-    grid-column: span 1;
+/* On larger screens, ensure Node.js aligns below HTML and PostgreSQL below CSS */
+@media (min-width: 600px) {
+    .skills-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* First row: C, C++, Java, Swift */
+    /* Second row: Python, HTML, CSS, JavaScript */
+    /* Third row: Node.js (below HTML), PostgreSQL (below CSS) */
+    
+    .skill-card:nth-child(9) {
+        /* Node.js - place in same column as HTML (column 2) */
+        grid-column: 2;
+    }
+    
+    .skill-card:nth-child(10) {
+        /* PostgreSQL - place in same column as CSS (column 3) */
+        grid-column: 3;
+    }
 }
 
 .skill-card {
