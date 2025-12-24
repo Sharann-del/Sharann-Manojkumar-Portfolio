@@ -653,14 +653,17 @@ section {
     margin: 0 auto;
 }
 
-/* Align Node.js below HTML and PostgreSQL below CSS */
+/* Align Node.js below HTML (7th child) and PostgreSQL below CSS (8th child) */
+/* HTML is 7th, CSS is 8th, Node.js is 9th, PostgreSQL is 10th */
 .skill-card:nth-child(9) {
-    grid-column: auto;
+    grid-column: 1;
 }
 
 .skill-card:nth-child(10) {
-    grid-column: auto;
+    grid-column: 2;
 }
+
+/* Ensure JavaScript (11th) continues in the grid naturally */
 
 .skill-card {
     background: rgba(255, 255, 255, 0.03);
