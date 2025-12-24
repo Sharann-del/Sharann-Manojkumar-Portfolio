@@ -686,6 +686,8 @@ section {
 .skill-card:nth-child(6)::before { background: linear-gradient(90deg, transparent, rgba(235, 77, 75, 0.15), transparent); }
 .skill-card:nth-child(7)::before { background: linear-gradient(90deg, transparent, rgba(156, 136, 255, 0.15), transparent); }
 .skill-card:nth-child(8)::before { background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.15), transparent); }
+.skill-card:nth-child(9)::before { background: linear-gradient(90deg, transparent, rgba(104, 160, 99, 0.15), transparent); }
+.skill-card:nth-child(10)::before { background: linear-gradient(90deg, transparent, rgba(51, 103, 144, 0.15), transparent); }
 
 .skill-card:hover::before {
     left: 100%;
@@ -739,6 +741,18 @@ section {
     box-shadow: 0 10px 40px rgba(255, 107, 107, 0.3);
 }
 
+.skill-card:nth-child(9):hover {
+    transform: translateY(-10px);
+    border-color: #68a063;
+    box-shadow: 0 10px 40px rgba(104, 160, 99, 0.3);
+}
+
+.skill-card:nth-child(10):hover {
+    transform: translateY(-10px);
+    border-color: #336790;
+    box-shadow: 0 10px 40px rgba(51, 103, 144, 0.3);
+}
+
 .skill-icon {
     font-size: 3rem;
     font-weight: 700;
@@ -755,6 +769,8 @@ section {
 .skill-card:nth-child(6):hover .skill-icon { color: #eb4d4b; transform: scale(1.1); }
 .skill-card:nth-child(7):hover .skill-icon { color: #9c88ff; transform: scale(1.1); }
 .skill-card:nth-child(8):hover .skill-icon { color: #ff6b6b; transform: scale(1.1); }
+.skill-card:nth-child(9):hover .skill-icon { color: #68a063; transform: scale(1.1); }
+.skill-card:nth-child(10):hover .skill-icon { color: #336790; transform: scale(1.1); }
 
 .skill-name {
     font-size: 1.2rem;
@@ -771,6 +787,8 @@ section {
 .skill-card:nth-child(6):hover .skill-name { color: #eb4d4b; }
 .skill-card:nth-child(7):hover .skill-name { color: #9c88ff; }
 .skill-card:nth-child(8):hover .skill-name { color: #ff6b6b; }
+.skill-card:nth-child(9):hover .skill-name { color: #68a063; }
+.skill-card:nth-child(10):hover .skill-name { color: #336790; }
 
 /* Projects Section */
 .projects-section {
