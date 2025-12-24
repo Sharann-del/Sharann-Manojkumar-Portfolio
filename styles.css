@@ -819,20 +819,20 @@ section {
 
 .project-card:nth-child(1):hover {
     transform: translateY(-10px);
-    border-color: #ff6b6b;
-    box-shadow: 0 20px 60px rgba(255, 107, 107, 0.25);
+    border-color: #00d4ff;
+    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.25);
 }
 
 .project-card:nth-child(2):hover {
     transform: translateY(-10px);
-    border-color: #4ecdc4;
-    box-shadow: 0 20px 60px rgba(78, 205, 196, 0.25);
+    border-color: #ff6b6b;
+    box-shadow: 0 20px 60px rgba(255, 107, 107, 0.25);
 }
 
 .project-card:nth-child(3):hover {
     transform: translateY(-10px);
-    border-color: #f9ca24;
-    box-shadow: 0 20px 60px rgba(249, 202, 36, 0.25);
+    border-color: #4ecdc4;
+    box-shadow: 0 20px 60px rgba(78, 205, 196, 0.25);
 }
 
 .project-card:nth-child(4):hover {
@@ -843,20 +843,20 @@ section {
 
 .project-card:nth-child(5):hover {
     transform: translateY(-10px);
-    border-color: #9c88ff;
-    box-shadow: 0 20px 60px rgba(156, 136, 255, 0.25);
+    border-color: #f9ca24;
+    box-shadow: 0 20px 60px rgba(249, 202, 36, 0.25);
 }
 
 .project-card:nth-child(6):hover {
     transform: translateY(-10px);
-    border-color: #ff6b9d;
-    box-shadow: 0 20px 60px rgba(255, 107, 157, 0.25);
+    border-color: #9c88ff;
+    box-shadow: 0 20px 60px rgba(156, 136, 255, 0.25);
 }
 
 .project-card:nth-child(7):hover {
     transform: translateY(-10px);
-    border-color: #00d4ff;
-    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.25);
+    border-color: #ff6b9d;
+    box-shadow: 0 20px 60px rgba(255, 107, 157, 0.25);
 }
 
 .project-header {
@@ -888,18 +888,18 @@ section {
 }
 
 .project-card:nth-child(1) .project-type {
+    color: #00d4ff;
+    background-color: rgba(0, 212, 255, 0.1);
+}
+
+.project-card:nth-child(2) .project-type {
     color: #ff6b6b;
     background-color: rgba(255, 107, 107, 0.1);
 }
 
-.project-card:nth-child(2) .project-type {
+.project-card:nth-child(3) .project-type {
     color: #4ecdc4;
     background-color: rgba(78, 205, 196, 0.1);
-}
-
-.project-card:nth-child(3) .project-type {
-    color: #f9ca24;
-    background-color: rgba(249, 202, 36, 0.1);
 }
 
 .project-card:nth-child(4) .project-type {
@@ -908,18 +908,18 @@ section {
 }
 
 .project-card:nth-child(5) .project-type {
+    color: #f9ca24;
+    background-color: rgba(249, 202, 36, 0.1);
+}
+
+.project-card:nth-child(6) .project-type {
     color: #9c88ff;
     background-color: rgba(156, 136, 255, 0.1);
 }
 
-.project-card:nth-child(6) .project-type {
+.project-card:nth-child(7) .project-type {
     color: #ff6b9d;
     background-color: rgba(255, 107, 157, 0.1);
-}
-
-.project-card:nth-child(7) .project-type {
-    color: #00d4ff;
-    background-color: rgba(0, 212, 255, 0.1);
 }
 
 .project-description {
@@ -949,15 +949,15 @@ section {
 }
 
 .project-card:nth-child(1) .project-link:hover {
-    color: #ff6b6b;
+    color: #00d4ff;
 }
 
 .project-card:nth-child(2) .project-link:hover {
-    color: #4ecdc4;
+    color: #ff6b6b;
 }
 
 .project-card:nth-child(3) .project-link:hover {
-    color: #f9ca24;
+    color: #4ecdc4;
 }
 
 .project-card:nth-child(4) .project-link:hover {
@@ -965,15 +965,15 @@ section {
 }
 
 .project-card:nth-child(5) .project-link:hover {
-    color: #9c88ff;
+    color: #f9ca24;
 }
 
 .project-card:nth-child(6) .project-link:hover {
-    color: #ff6b9d;
+    color: #9c88ff;
 }
 
 .project-card:nth-child(7) .project-link:hover {
-    color: #00d4ff;
+    color: #ff6b9d;
 }
 
 .project-link:hover svg {
