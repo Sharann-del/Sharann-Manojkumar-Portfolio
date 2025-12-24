@@ -655,8 +655,8 @@ section {
 
 /* On larger screens, ensure proper alignment */
 @media (min-width: 600px) {
-    /* With 4 columns: Row 1 (C, C++, Java, Swift), Row 2 (Python, HTML, CSS, JavaScript) */
-    /* Row 3: Node.js (below HTML, col 2), PostgreSQL (below CSS, col 3) */
+    /* With 4 columns: Row 1 (C, C++, Java, Swift), Row 2 (Python, HTML, CSS, empty) */
+    /* Row 3: Node.js (below HTML, col 2), PostgreSQL (below CSS, col 3), JavaScript (below Swift, col 4) */
     /* HTML is 6th (col 2), CSS is 7th (col 3), Node.js is 8th (col 2), PostgreSQL is 9th (col 3), JavaScript is 10th (col 4) */
     
     .skill-card:nth-child(8) {
@@ -670,7 +670,7 @@ section {
     }
     
     .skill-card:nth-child(10) {
-        /* JavaScript - place in column 4 */
+        /* JavaScript - place in same column as Swift (4th child, column 4) */
         grid-column: 4;
     }
 }
