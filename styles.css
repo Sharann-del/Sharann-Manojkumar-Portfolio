@@ -653,6 +653,21 @@ section {
     margin: 0 auto;
 }
 
+/* Center Node.js and PostgreSQL below HTML and CSS */
+@media (min-width: 800px) {
+    .skill-card:nth-child(9) {
+        grid-column: 1;
+        justify-self: end;
+        margin-right: 1rem;
+    }
+    
+    .skill-card:nth-child(10) {
+        grid-column: 2;
+        justify-self: start;
+        margin-left: 1rem;
+    }
+}
+
 .skill-card {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
