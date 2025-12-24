@@ -853,6 +853,12 @@ section {
     box-shadow: 0 20px 60px rgba(255, 107, 157, 0.25);
 }
 
+.project-card:nth-child(7):hover {
+    transform: translateY(-10px);
+    border-color: #00d4ff;
+    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.25);
+}
+
 .project-header {
     display: flex;
     justify-content: space-between;
@@ -911,6 +917,11 @@ section {
     background-color: rgba(255, 107, 157, 0.1);
 }
 
+.project-card:nth-child(7) .project-type {
+    color: #00d4ff;
+    background-color: rgba(0, 212, 255, 0.1);
+}
+
 .project-description {
     color: var(--text-gray);
     line-height: 1.7;
@@ -959,6 +970,10 @@ section {
 
 .project-card:nth-child(6) .project-link:hover {
     color: #ff6b9d;
+}
+
+.project-card:nth-child(7) .project-link:hover {
+    color: #00d4ff;
 }
 
 .project-link:hover svg {
