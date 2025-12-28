@@ -1,3 +1,52 @@
+// Custom Cursor
+const createCustomCursor = () => {
+    // Only create cursor on desktop
+    if (window.innerWidth <= 768) return;
+
+    // Create yellow square cursor
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+
+    // Update cursor position
+    function updateCursorPosition(x, y) {
+        cursor.style.left = (x - 10) + 'px';  // -10 is half of 20px width
+        cursor.style.top = (y - 10) + 'px';
+    }
+
+    // Track mouse position
+    document.addEventListener('mousemove', (e) => {
+        updateCursorPosition(e.clientX, e.clientY);
+    });
+
+    // Interactive elements - cursor becomes translucent
+    const hoverElements = document.querySelectorAll('a, button, .btn, .nav-link, .project-card, .skill-badge, .back-to-top, .mobile-menu-toggle, .project-link, .nav-logo a, .experience-item, .dev-box, .resume-preview');
+
+    hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.classList.add('cursor-hover');
+            el.classList.add('cursor-target-active');
+        });
+
+        el.addEventListener('mouseleave', () => {
+            cursor.classList.remove('cursor-hover');
+            el.classList.remove('cursor-target-active');
+        });
+    });
+
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', () => {
+        cursor.style.opacity = '0';
+    });
+
+    document.addEventListener('mouseenter', () => {
+        cursor.style.opacity = '1';
+    });
+};
+
+// Initialize cursor
+createCustomCursor();
+
 // Scroll-Spy Navigation Highlighting
 document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section[id]');

@@ -101,6 +101,83 @@
     }
 }
 
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 4px 4px 0 var(--accent-teal),
+                     8px 8px 0 var(--accent-yellow);
+    }
+    50% {
+        text-shadow: 6px 6px 0 var(--accent-pink),
+                     12px 12px 0 var(--accent-orange);
+    }
+}
+
+@keyframes letterSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes wordReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
 @keyframes pageEntry {
     0% {
         opacity: 0;
@@ -193,6 +270,7 @@ body {
     overflow-x: hidden;
     animation: pageEntry 0.8s ease-out backwards;
     position: relative;
+    cursor: none;
 }
 
 /* Smooth scrolling with custom easing */
@@ -405,7 +483,7 @@ section {
 /* Development boxes in About section */
 .dev-box {
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    cursor: pointer;
+    cursor: none;
     position: relative;
 }
 
@@ -455,25 +533,6 @@ section {
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     cursor: pointer;
     position: relative;
-    overflow: hidden;
-}
-
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.1);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.btn:hover::before {
-    width: 300px;
-    height: 300px;
 }
 
 .btn-primary {
@@ -1124,5 +1183,96 @@ footer {
     .skill-badge {
         font-size: 0.85rem;
         padding: 0.6rem 1rem;
+    }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-yellow);
+    border: 3px solid var(--border-black);
+    box-shadow: 4px 4px 0 var(--border-black);
+    pointer-events: none;
+    z-index: 10000;
+    border-radius: 0;
+    /* Only transition size and visual properties, not position */
+    transition: width 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                height 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                opacity 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+/* Hover state - translucent yellow */
+.custom-cursor.cursor-hover {
+    opacity: 0.4;
+    background: var(--accent-yellow);
+    border-color: var(--border-black);
+    box-shadow: 4px 4px 0 var(--border-black);
+}
+
+a, button, .btn, .nav-link, .project-link, .project-card, 
+.skill-badge, .back-to-top, .mobile-menu-toggle, input, textarea {
+    cursor: none;
+}
+
+/* iPad-style cursor target pop effect */
+.cursor-target-active {
+    transform: scale(1.05) translateY(-2px) !important;
+    transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+.btn.cursor-target-active,
+.back-to-top.cursor-target-active {
+    box-shadow: 6px 6px 0 var(--border-black) !important;
+}
+
+.project-card.cursor-target-active {
+    transform: scale(1.02) translate(-4px, -4px) !important;
+    box-shadow: 14px 14px 0 var(--border-black) !important;
+}
+
+.skill-badge.cursor-target-active {
+    box-shadow: 7px 7px 0 var(--border-black) !important;
+}
+
+.nav-link.cursor-target-active {
+    box-shadow: 5px 5px 0 var(--border-black) !important;
+}
+
+.nav-logo a.cursor-target-active {
+    box-shadow: 5px 5px 0 var(--border-black) !important;
+}
+
+.experience-item.cursor-target-active {
+    transform: scale(1.02) translateY(-3px) !important;
+    box-shadow: 10px 10px 0 var(--border-black) !important;
+}
+
+.dev-box.cursor-target-active {
+    transform: translate(-2px, -2px) scale(1.02) !important;
+    box-shadow: 8px 8px 0 var(--border-black) !important;
+}
+
+.resume-preview.cursor-target-active {
+    transform: scale(1.01) translateY(-2px) !important;
+    box-shadow: 14px 14px 0 var(--border-black) !important;
+}
+
+/* Hide custom cursor on mobile */
+@media (max-width: 768px) {
+    .custom-cursor {
+        display: none !important;
+    }
+    
+    body {
+        cursor: auto !important;
+    }
+    
+    a, button, .btn, .nav-link, .project-link, .project-card, 
+    .skill-badge, .back-to-top, .mobile-menu-toggle, input, textarea {
+        cursor: pointer !important;
     }
 }
