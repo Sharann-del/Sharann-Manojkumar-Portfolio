@@ -563,8 +563,7 @@ section {
     overflow: hidden;
     position: relative;
     background: var(--accent-yellow);
-    transform: rotate(2deg);
-    /* Dynamic tilt */
+    transform: rotate(0deg);
     transition: var(--transition-smooth);
     will-change: transform;
 }
@@ -642,11 +641,11 @@ section {
 }
 
 .hero-image-wrapper.reveal {
-    transform: translateX(30px) rotate(2deg);
+    transform: translateX(30px) rotate(0deg);
 }
 
 .hero-image-wrapper.reveal.active {
-    transform: translateX(0) rotate(2deg);
+    transform: translateX(0) rotate(0deg);
 }
 
 .section-title::before {

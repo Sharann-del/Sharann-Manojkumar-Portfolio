@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function parallaxEffect() {
         const scrolled = window.pageYOffset;
         if (heroImage && scrolled < window.innerHeight) {
-            heroImage.style.transform = `translateY(${scrolled * 0.3}px) rotate(2deg)`;
+            heroImage.style.transform = `translateY(${scrolled * 0.3}px) rotate(0deg)`;
         }
     }
     
