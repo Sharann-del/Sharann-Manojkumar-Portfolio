@@ -10,18 +10,24 @@
 </head>
 
 <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
     <nav class="navbar">
         <div class="container nav-container">
             <div class="nav-logo">
-                <a href="index.html">Sharann Manojkumar</a>
+                <a href="#home">Sharann Manojkumar</a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="tools.html" class="nav-link">Tools</a></li>
-                <li><a href="work.html" class="nav-link">Work</a></li>
-                <li><a href="experience.html" class="nav-link">Exp</a></li>
-                <li><a href="resume.html" class="nav-link">Resume</a></li>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link" data-section="home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+                <li><a href="#tools" class="nav-link" data-section="tools">Tools</a></li>
+                <li><a href="#work" class="nav-link" data-section="work">Work</a></li>
+                <li><a href="#experience" class="nav-link" data-section="experience">Exp</a></li>
+                <li><a href="#resume" class="nav-link" data-section="resume">Resume</a></li>
             </ul>
         </div>
     </nav>
@@ -38,8 +44,8 @@
                     Specializing in Web Applications and iOS Development.
                 </p>
                 <div class="hero-actions">
-                    <a href="work.html" class="btn btn-primary">See My Work</a>
-                    <a href="about.html" class="btn btn-secondary">About Me</a>
+                    <a href="#work" class="btn btn-primary">See My Work</a>
+                    <a href="#about" class="btn btn-secondary">About Me</a>
                 </div>
             </div>
             <div class="hero-image-wrapper">
@@ -48,10 +54,213 @@
         </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="section-full">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="experience-item">
+                <p style="margin-bottom: 2rem; font-size: 1.2rem;">
+                    Creating useful and user-centered applications is something I really enjoy doing, and alongside
+                    that, I am developing my skills in iOS app development and web development.
+                </p>
+                <p style="margin-bottom: 1.5rem;">
+                    I am a member of the web/app development department of the <strong>iSpace Club</strong> at my
+                    college. In this position, I work with other developers, help out in the student tech initiatives,
+                    and constantly work on getting my technical skills up to par through project-based learning.
+                </p>
+                <div class="hero-description dev-box ios-dev" style="width: 100%; max-width: 100%; margin-top: 2rem;">
+                    <h3 style="margin-bottom: 1rem; font-family: var(--font-heading);">iOS Development</h3>
+                    <p>Xcode is my primary development environment, and I am developing iOS applications using both
+                        Swift and SwiftUI. Currently working on productivity-focused apps including Notion Widgets and
+                        Student Planner.</p>
+                </div>
+                <div class="hero-description dev-box web-dev"
+                    style="width: 100%; max-width: 100%; margin-top: 2rem; background: var(--accent-yellow);">
+                    <h3 style="margin-bottom: 1rem; font-family: var(--font-heading);">Full-Stack Web Development</h3>
+                    <p>Experienced in building web-based systems with Node.js, TypeScript, and PostgreSQL. Worked on a
+                        centralized billing and stock management system during my internship at Geo Pacific Solutions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="section-full v-center">
+        <div class="container">
+            <h2 class="section-title">Tools & Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-badge">C</div>
+                <div class="skill-badge">C++</div>
+                <div class="skill-badge">Java</div>
+                <div class="skill-badge">Swift</div>
+                <div class="skill-badge">Python</div>
+                <div class="skill-badge">JavaScript</div>
+                <div class="skill-badge">TypeScript</div>
+                <div class="skill-badge">HTML/CSS</div>
+                <div class="skill-badge" style="background: var(--accent-pink);">React</div>
+                <div class="skill-badge" style="background: var(--accent-yellow);">Node.js</div>
+                <div class="skill-badge" style="background: var(--accent-teal);">PostgreSQL</div>
+                <div class="skill-badge">Git</div>
+                <div class="skill-badge">Xcode</div>
+                <div class="skill-badge">Figma</div>
+                <div class="skill-badge">Postman</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="section-full">
+        <div class="container">
+            <h2 class="section-title">Selected Work</h2>
+            <div class="projects-grid">
+
+                <!-- TreeGPT -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">TreeGPT</h3>
+                        <span class="project-type">WEB APP</span>
+                    </div>
+                    <div class="project-body">
+                        <p>A hierarchical problem-solving system with tree visualization that uses ChatGPT (OpenAI API)
+                            to solve problems and sub-problems with backtracking and context-aware reasoning.</p>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://github.com/Sharann-del/TreeGPT" target="_blank" class="project-link">View
+                            Source -></a>
+                    </div>
+                </article>
+
+                <!-- Notion Widgets -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Notion Widgets</h3>
+                        <span class="project-type">iOS APP</span>
+                    </div>
+                    <div class="project-body">
+                        <p>An iOS app that allows users to connect their Notion account securely and display database
+                            information directly on home screen widgets.</p>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://github.com/Sharann-del/NotionWidgets" target="_blank" class="project-link">View
+                            Source -></a>
+                    </div>
+                </article>
+
+                <!-- Planner -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Planner</h3>
+                        <span class="project-type">iOS APP</span>
+                    </div>
+                    <div class="project-body">
+                        <p>A Planner app that assists students in organizing schedules, classes, calendar events,
+                            managing to-dos, and tracking classes through Live Activities.</p>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://github.com/Sharann-del/Planner" target="_blank" class="project-link">View
+                            Source -></a>
+                    </div>
+                </article>
+
+                <!-- Billing System -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Billing System</h3>
+                        <span class="project-type">WEB APP</span>
+                    </div>
+                    <div class="project-body">
+                        <p>A web-based centralized billing and stock management system developed during an internship at
+                            Geo Pacific Solutions.</p>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://github.com/Sharann-del/billing-system" target="_blank"
+                            class="project-link">View Source -></a>
+                    </div>
+                </article>
+
+                <!-- ToDo List -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">ToDo List</h3>
+                        <span class="project-type">iOS APP</span>
+                    </div>
+                    <div class="project-body">
+                        <p>A productivity-focused iOS application for managing tasks and to-do lists with an intuitive
+                            user interface.</p>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://github.com/Sharann-del/ToDoList" target="_blank" class="project-link">View
+                            Source -></a>
+                    </div>
+                </article>
+
+                <!-- Icons Project -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">1200 iOS Icons</h3>
+                        <span class="project-type">DESIGN</span>
+                    </div>
+                    <div class="project-body">
+                        <p>A premium collection of 1200 minimalistic iOS app icons featuring 8 color themes and
+                            wallpapers.</p>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://sites.google.com/view/sharannsicons/home" target="_blank"
+                            class="project-link">View Project -></a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section-full v-center">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+
+            <div class="experience-item">
+                <span class="experience-date">2024</span>
+                <h3 class="experience-role">Full Stack Developer</h3>
+                <span class="experience-company">Geo Pacific Solutions</span>
+                <p>
+                    Developed a Tally-like billing system focusing on inventory tracking and invoicing. Worked with a
+                    team of 6 developers in a project-based learning environment.
+                </p>
+                <ul style="margin-top: 1rem; list-style-position: inside;">
+                    <li>Built responsive UI modules using React/Next.js.</li>
+                    <li>Designed PostgreSQL schema for inventory management.</li>
+                    <li>Integrated real-time PDF invoicing generation.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="section-full">
+        <div class="container">
+            <h2 class="section-title">My Resume</h2>
+            <div class="hero-description"
+                style="width: 100%; max-width: 100%; text-align: center; background: white; margin-bottom: 2rem;">
+                <p>Ready to collaborate? Check out my full professional history.</p>
+                <br>
+                <a href="Resume.pdf" download class="btn btn-primary">Download PDF</a>
+            </div>
+
+            <div class="resume-preview">
+                <iframe src="Resume.pdf#view=FitH&toolbar=0" class="resume-iframe" title="Resume Preview"></iframe>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
         </div>
     </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
     <script src="script.js"></script>
 </body>
