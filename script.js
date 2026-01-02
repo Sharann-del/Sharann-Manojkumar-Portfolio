@@ -255,8 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ================================
     if ('fonts' in document) {
         Promise.all([
-            document.fonts.load('700 1rem "Space Grotesk"'),
-            document.fonts.load('400 1rem "Inter"')
+            document.fonts.load('400 1rem "Fira Code"')
         ]).then(() => {
             document.body.classList.add('fonts-loaded');
         });
@@ -318,6 +317,66 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.transition = 'none';
         });
     }
+    
+    // ================================
+    // TYPING ANIMATION ON BOX HOVER
+    // ================================
+    const boxes = document.querySelectorAll('.detail-card, .project-card-expanded, .timeline-item-expanded, .skill-tag, .contact-link');
+    
+    boxes.forEach(box => {
+        const textElements = box.querySelectorAll('h5, p, h3, .project-name-expanded, .project-description, .project-type, .project-year, .timeline-year, .timeline-content h5, .timeline-content p, .timeline-company, span:not(.project-tech-stack span), .link-label, .link-text');
+        const originalTexts = new Map();
+        
+        // Store original text content
+        textElements.forEach(el => {
+            if (el.textContent.trim()) {
+                originalTexts.set(el, el.textContent);
+            }
+        });
+        
+        let typingTimeout;
+        let isTyping = false;
+        
+        box.addEventListener('mouseenter', () => {
+            if (isTyping) return;
+            isTyping = true;
+            
+            textElements.forEach((el, index) => {
+                const originalText = originalTexts.get(el);
+                if (!originalText) return;
+                
+                setTimeout(() => {
+                    el.textContent = '';
+                    let charIndex = 0;
+                    
+                    const typeChar = () => {
+                        if (charIndex < originalText.length) {
+                            el.textContent += originalText[charIndex];
+                            charIndex++;
+                            typingTimeout = setTimeout(typeChar, 10);
+                        }
+                    };
+                    
+                    typeChar();
+                }, index * 100);
+            });
+        });
+        
+        box.addEventListener('mouseleave', () => {
+            if (typingTimeout) {
+                clearTimeout(typingTimeout);
+            }
+            isTyping = false;
+            
+            // Restore original text immediately
+            textElements.forEach(el => {
+                const originalText = originalTexts.get(el);
+                if (originalText) {
+                    el.textContent = originalText;
+                }
+            });
+        });
+    });
     
     // ================================
     // LOG READY STATE
