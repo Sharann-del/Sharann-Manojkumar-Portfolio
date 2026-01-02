@@ -7,260 +7,336 @@
     <title>Sharann Manojkumar | iOS & Full-Stack Developer</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="scroll-progress" id="scrollProgress"></div>
-    <nav class="navbar">
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <div class="nav-logo">
-                <a href="#home">Sharann Manojkumar</a>
+                <a href="#home">SM</a>
             </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#work" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-icon">◐</span>
+            </button>
             <div class="mobile-menu-toggle" id="mobileMenuToggle">
                 <span></span>
                 <span></span>
-                <span></span>
             </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link" data-section="home">Home</a></li>
-                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
-                <li><a href="#tools" class="nav-link" data-section="tools">Tools</a></li>
-                <li><a href="#work" class="nav-link" data-section="work">Work</a></li>
-                <li><a href="#experience" class="nav-link" data-section="experience">Exp</a></li>
-                <li><a href="#resume" class="nav-link" data-section="resume">Resume</a></li>
-            </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-section v-center">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <span class="hero-greeting">HELLO. I'M SHARANN MANOJKUMAR</span>
-                <h1 class="hero-title"><span id="typewriter-text">IOS APP DEVELOPER</span><span
-                        class="typewriter-caret">_</span></h1>
-                <p class="hero-description">
-                    Creating innovative solutions through code, design, and passion for technology.
-                    Specializing in Web Applications and iOS Development.
-                </p>
-                <div class="hero-actions">
-                    <a href="#work" class="btn btn-primary">See My Work</a>
-                    <a href="#about" class="btn btn-secondary">About Me</a>
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="name-line">
+                        <span class="letter">S</span><span class="letter">h</span><span class="letter">a</span><span class="letter">r</span><span class="letter">a</span><span class="letter">n</span><span class="letter">n</span>
+                    </span>
+                    <span class="name-line">
+                        <span class="letter">M</span><span class="letter">a</span><span class="letter">n</span><span class="letter">o</span><span class="letter">j</span><span class="letter">k</span><span class="letter">u</span><span class="letter">m</span><span class="letter">a</span><span class="letter">r</span>
+                    </span>
+                </h1>
+                <div class="typing-text">
+                    <span id="typedText"></span><span class="typing-cursor">|</span>
                 </div>
-            </div>
-            <div class="hero-image-wrapper">
-                <img src="picture.jpg" alt="Sharann" class="hero-image">
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section-full">
+    <section id="about" class="about-section">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="experience-item">
-                <p style="margin-bottom: 2rem; font-size: 1.2rem;">
-                    Creating useful and user-centered applications is something I really enjoy doing, and alongside
-                    that, I am developing my skills in iOS app development and web development.
-                </p>
-                <p style="margin-bottom: 1.5rem;">
-                    I am a member of the web/app development department of the <strong>iSpace Club</strong> at my
-                    college. In this position, I work with other developers, help out in the student tech initiatives,
-                    and constantly work on getting my technical skills up to par through project-based learning.
-                </p>
-                <div class="hero-description dev-box ios-dev" style="width: 100%; max-width: 100%; margin-top: 2rem;">
-                    <h3 style="margin-bottom: 1rem; font-family: var(--font-heading);">iOS Development</h3>
-                    <p>Xcode is my primary development environment, and I am developing iOS applications using both
-                        Swift and SwiftUI. Currently working on productivity-focused apps including Notion Widgets and
-                        Student Planner.</p>
-                </div>
-                <div class="hero-description dev-box web-dev"
-                    style="width: 100%; max-width: 100%; margin-top: 2rem; background: var(--accent-yellow);">
-                    <h3 style="margin-bottom: 1rem; font-family: var(--font-heading);">Full-Stack Web Development</h3>
-                    <p>Experienced in building web-based systems with Node.js, TypeScript, and PostgreSQL. Worked on a
-                        centralized billing and stock management system during my internship at Geo Pacific Solutions.
+            <div class="about-header">
+                <div class="about-intro">
+                    <h3>iOS <span class="ampersand">&</span> Full-Stack Developer<br>Based in <span class="highlight">India</span></h3>
+                    <p class="about-description">
+                        I'm a passionate developer who believes in creating <em>meaningful digital experiences</em> that solve real problems. 
+                        With a strong foundation in computer science and hands-on experience in both mobile and web development, 
+                        I specialize in building applications that users genuinely enjoy using.
+                    </p>
+                    <p class="about-description">
+                        My journey in tech started with a curiosity about how apps work, which evolved into a deep passion for 
+                        creating them. I focus on writing clean, maintainable code and designing intuitive user interfaces that 
+                        make complex functionality feel simple.
                     </p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Tools Section -->
-    <section id="tools" class="section-full v-center">
-        <div class="container">
-            <h2 class="section-title">Tools & Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-badge">C</div>
-                <div class="skill-badge">C++</div>
-                <div class="skill-badge">Java</div>
-                <div class="skill-badge">Swift</div>
-                <div class="skill-badge">Python</div>
-                <div class="skill-badge">JavaScript</div>
-                <div class="skill-badge">TypeScript</div>
-                <div class="skill-badge">HTML/CSS</div>
-                <div class="skill-badge" style="background: var(--accent-pink);">React</div>
-                <div class="skill-badge" style="background: var(--accent-yellow);">Node.js</div>
-                <div class="skill-badge" style="background: var(--accent-teal);">PostgreSQL</div>
-                <div class="skill-badge">Git</div>
-                <div class="skill-badge">Xcode</div>
-                <div class="skill-badge">Figma</div>
-                <div class="skill-badge">Postman</div>
+            <div class="about-details">
+                <div class="detail-section">
+                    <h4 class="detail-heading">What I Do</h4>
+                <div class="detail-grid">
+                    <div class="detail-card">
+                        <h5>iOS Development</h5>
+                        <p>Building native iOS applications using Swift and SwiftUI. I focus on creating smooth, performant apps 
+                        that leverage the full power of Apple's ecosystem, from WidgetKit to Live Activities. My apps prioritize 
+                        user experience with intuitive interfaces and seamless integration with iOS features.</p>
+                    </div>
+                    <div class="detail-card">
+                        <h5>Full-Stack Development</h5>
+                        <p>Developing end-to-end web solutions with modern technologies. Experienced in building RESTful APIs, 
+                        managing databases, and creating responsive frontends that scale. I work across the entire stack, from 
+                        database design to frontend implementation, ensuring cohesive and efficient applications.</p>
+                    </div>
+                    <div class="detail-card">
+                        <h5>UI/UX Design</h5>
+                        <p>Designing user-centered interfaces with attention to detail. I use Figma to prototype ideas and 
+                        iterate quickly, ensuring the final product is both beautiful and functional. My design process focuses 
+                        on creating intuitive experiences that users love.</p>
+                    </div>
+                </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4 class="detail-heading">Experience & Education</h4>
+                    <div class="timeline-grid">
+                        <div class="timeline-item-expanded">
+                            <span class="timeline-year">2021<span class="timeline-dash">—</span>2025</span>
+                            <div class="timeline-content">
+                                <h5>Computer Science Student</h5>
+                                <p>Pursuing a degree in Computer Science, focusing on software engineering, algorithms, 
+                                and data structures. Maintaining strong academic performance while actively participating 
+                                in technical communities and building real-world projects.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item-expanded">
+                            <span class="timeline-year">2024</span>
+                            <div class="timeline-content">
+                                <h5>Full Stack Developer Intern</h5>
+                                <p class="timeline-company">Geo Pacific Solutions</p>
+                                <p>Developed a comprehensive billing and inventory management system. Worked with a team 
+                                of developers to build a Tally-like application using React, Node.js, and PostgreSQL. 
+                                Implemented features like real-time PDF invoice generation and complex data schemas.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item-expanded">
+                            <span class="timeline-year">2023<span class="timeline-dash">—</span>Today</span>
+                            <div class="timeline-content">
+                                <h5>Web/App Development Team</h5>
+                                <p class="timeline-company">iSpace Club</p>
+                                <p>Member of the college's premier tech club, collaborating on student projects and 
+                                organizing technical workshops. Contributing to open-source initiatives and mentoring 
+                                peers in web and mobile development.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4 class="detail-heading">Technical Skills</h4>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Swift</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">SwiftUI</span>
+                        <span class="skill-tag">UIKit</span>
+                        <span class="skill-tag">Xcode</span>
+                        <span class="skill-tag">Core Data</span>
+                        <span class="skill-tag">WidgetKit</span>
+                        <span class="skill-tag">Live Activities</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">Express</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">Tailwind</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">REST APIs</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Work Section -->
-    <section id="work" class="section-full">
+    <!-- Projects Section -->
+    <section id="work" class="work-section">
         <div class="container">
-            <h2 class="section-title">Selected Work</h2>
-            <div class="projects-grid">
-
-                <!-- TreeGPT -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">TreeGPT</h3>
-                        <span class="project-type">WEB APP</span>
+            <h2 class="section-heading">Selected Projects <span class="year-range">(2023 — Today)</span></h2>
+            <p class="section-subtitle">A curated collection of my recent work in iOS and web development</p>
+            
+            <div class="projects-grid-expanded">
+                
+                <article class="project-card-expanded">
+                    <div class="project-header-expanded">
+                        <div class="project-meta-expanded">
+                            <span class="project-type">Web Application</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3 class="project-name-expanded">TreeGPT</h3>
                     </div>
-                    <div class="project-body">
-                        <p>A hierarchical problem-solving system with tree visualization that uses ChatGPT (OpenAI API)
-                            to solve problems and sub-problems with backtracking and context-aware reasoning.</p>
+                    <p class="project-description">
+                        An innovative hierarchical problem-solving system that leverages ChatGPT's API to break down 
+                        complex problems into manageable sub-problems. Features interactive tree visualization, 
+                        backtracking capabilities, and context-aware reasoning for intelligent problem decomposition.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span>React</span>
+                        <span>OpenAI API</span>
+                        <span>Node.js</span>
+                        <span>D3.js</span>
                     </div>
-                    <div class="project-footer">
-                        <a href="https://github.com/Sharann-del/TreeGPT" target="_blank" class="project-link">View
-                            Source -></a>
-                    </div>
+                    <a href="https://github.com/Sharann-del/TreeGPT" target="_blank" class="project-link-expanded">
+                        View on GitHub →
+                    </a>
                 </article>
 
-                <!-- Notion Widgets -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Notion Widgets</h3>
-                        <span class="project-type">iOS APP</span>
+                <article class="project-card-expanded">
+                    <div class="project-header-expanded">
+                        <div class="project-meta-expanded">
+                            <span class="project-type">iOS Application</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3 class="project-name-expanded">Notion Widgets</h3>
                     </div>
-                    <div class="project-body">
-                        <p>An iOS app that allows users to connect their Notion account securely and display database
-                            information directly on home screen widgets.</p>
+                    <p class="project-description">
+                        A native iOS app that seamlessly connects with Notion's API to bring your workspace to your 
+                        home screen. Users can securely authenticate, select databases, and display real-time information 
+                        through beautiful, customizable iOS widgets powered by WidgetKit.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span>Swift</span>
+                        <span>SwiftUI</span>
+                        <span>WidgetKit</span>
+                        <span>Notion API</span>
                     </div>
-                    <div class="project-footer">
-                        <a href="https://github.com/Sharann-del/NotionWidgets" target="_blank" class="project-link">View
-                            Source -></a>
-                    </div>
+                    <a href="https://github.com/Sharann-del/NotionWidgets" target="_blank" class="project-link-expanded">
+                        View on GitHub →
+                    </a>
                 </article>
 
-                <!-- Planner -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Planner</h3>
-                        <span class="project-type">iOS APP</span>
+                <article class="project-card-expanded">
+                    <div class="project-header-expanded">
+                        <div class="project-meta-expanded">
+                            <span class="project-type">iOS Application</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3 class="project-name-expanded">Student Planner</h3>
                     </div>
-                    <div class="project-body">
-                        <p>A Planner app that assists students in organizing schedules, classes, calendar events,
-                            managing to-dos, and tracking classes through Live Activities.</p>
+                    <p class="project-description">
+                        A comprehensive productivity app designed specifically for students. Features include schedule 
+                        management, calendar integration, to-do lists with priorities, and Live Activities that keep 
+                        track of ongoing classes in real-time on the lock screen and Dynamic Island.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span>SwiftUI</span>
+                        <span>Core Data</span>
+                        <span>Live Activities</span>
+                        <span>EventKit</span>
                     </div>
-                    <div class="project-footer">
-                        <a href="https://github.com/Sharann-del/Planner" target="_blank" class="project-link">View
-                            Source -></a>
-                    </div>
+                    <a href="https://github.com/Sharann-del/Planner" target="_blank" class="project-link-expanded">
+                        View on GitHub →
+                    </a>
                 </article>
 
-                <!-- Billing System -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Billing System</h3>
-                        <span class="project-type">WEB APP</span>
+                <article class="project-card-expanded">
+                    <div class="project-header-expanded">
+                        <div class="project-meta-expanded">
+                            <span class="project-type">Full-Stack Application</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3 class="project-name-expanded">Billing & Inventory System</h3>
                     </div>
-                    <div class="project-body">
-                        <p>A web-based centralized billing and stock management system developed during an internship at
-                            Geo Pacific Solutions.</p>
+                    <p class="project-description">
+                        Enterprise-grade web application built during my internship at Geo Pacific Solutions. A Tally-inspired 
+                        system for managing inventory, generating invoices, and tracking stock levels. Features real-time PDF 
+                        generation, complex reporting, and multi-user access control.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>PostgreSQL</span>
+                        <span>Express</span>
                     </div>
-                    <div class="project-footer">
-                        <a href="https://github.com/Sharann-del/billing-system" target="_blank"
-                            class="project-link">View Source -></a>
-                    </div>
+                    <a href="https://github.com/Sharann-del/billing-system" target="_blank" class="project-link-expanded">
+                        View on GitHub →
+                    </a>
                 </article>
 
-                <!-- ToDo List -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">ToDo List</h3>
-                        <span class="project-type">iOS APP</span>
+                <article class="project-card-expanded">
+                    <div class="project-header-expanded">
+                        <div class="project-meta-expanded">
+                            <span class="project-type">Design Project</span>
+                            <span class="project-year">2023</span>
+                        </div>
+                        <h3 class="project-name-expanded">1200 iOS Icons</h3>
                     </div>
-                    <div class="project-body">
-                        <p>A productivity-focused iOS application for managing tasks and to-do lists with an intuitive
-                            user interface.</p>
+                    <p class="project-description">
+                        A premium collection of 1200 meticulously crafted iOS app icons featuring minimalistic designs 
+                        across 8 carefully curated color themes. Each set includes matching wallpapers to create a 
+                        cohesive aesthetic for any iOS device. Perfect for users seeking a personalized home screen experience.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span>Figma</span>
+                        <span>Design Systems</span>
+                        <span>UI/UX</span>
                     </div>
-                    <div class="project-footer">
-                        <a href="https://github.com/Sharann-del/ToDoList" target="_blank" class="project-link">View
-                            Source -></a>
-                    </div>
-                </article>
-
-                <!-- Icons Project -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">1200 iOS Icons</h3>
-                        <span class="project-type">DESIGN</span>
-                    </div>
-                    <div class="project-body">
-                        <p>A premium collection of 1200 minimalistic iOS app icons featuring 8 color themes and
-                            wallpapers.</p>
-                    </div>
-                    <div class="project-footer">
-                        <a href="https://sites.google.com/view/sharannsicons/home" target="_blank"
-                            class="project-link">View Project -></a>
-                    </div>
+                    <a href="https://sites.google.com/view/sharannsicons/home" target="_blank" class="project-link-expanded">
+                        View Collection →
+                    </a>
                 </article>
 
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section-full v-center">
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="section-title">Experience</h2>
-
-            <div class="experience-item">
-                <span class="experience-date">2024</span>
-                <h3 class="experience-role">Full Stack Developer</h3>
-                <span class="experience-company">Geo Pacific Solutions</span>
-                <p>
-                    Developed a Tally-like billing system focusing on inventory tracking and invoicing. Worked with a
-                    team of 6 developers in a project-based learning environment.
+            <div class="contact-content">
+                <p class="contact-intro">
+                    I'm currently open to freelance opportunities and collaborations.<br>
+                    Feel free to contact me if you want to work together or have a chat.
                 </p>
-                <ul style="margin-top: 1rem; list-style-position: inside;">
-                    <li>Built responsive UI modules using React/Next.js.</li>
-                    <li>Designed PostgreSQL schema for inventory management.</li>
-                    <li>Integrated real-time PDF invoicing generation.</li>
-                </ul>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume" class="section-full">
-        <div class="container">
-            <h2 class="section-title">My Resume</h2>
-            <div class="hero-description"
-                style="width: 100%; max-width: 100%; text-align: center; background: white; margin-bottom: 2rem;">
-                <p>Ready to collaborate? Check out my full professional history.</p>
-                <br>
-                <a href="Resume.pdf" download class="btn btn-primary">Download PDF</a>
-            </div>
-
-            <div class="resume-preview">
-                <iframe src="Resume.pdf#view=FitH&toolbar=0" class="resume-iframe" title="Resume Preview"></iframe>
+                <div class="contact-links">
+                    <a href="mailto:sharannmanojkumar@gmail.com" class="contact-link">
+                        <span class="link-label">Em</span>
+                        <span class="link-text">Email</span>
+                    </a>
+                    <a href="https://github.com/Sharann-del" target="_blank" class="contact-link">
+                        <span class="link-label">Gh</span>
+                        <span class="link-text">GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com/in/sharannm" target="_blank" class="contact-link">
+                        <span class="link-label">Li</span>
+                        <span class="link-text">LinkedIn</span>
+                    </a>
+                    <a href="Resume.pdf" download class="contact-link">
+                        <span class="link-label">CV</span>
+                        <span class="link-text">Resume</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
+            <div class="footer-content">
+                <button class="back-to-top" id="backToTop">Back to top</button>
+                <p class="footer-text">© 2025 Sharann Manojkumar</p>
+            </div>
         </div>
     </footer>
-
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
     <script src="script.js"></script>
 </body>
