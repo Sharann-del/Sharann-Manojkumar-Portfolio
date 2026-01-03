@@ -20,32 +20,120 @@ document.addEventListener('DOMContentLoaded', () => {
     // THEME TOGGLE
     // ================================
     const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
+    const html = document.documentElement;
+    const themeIcon = document.querySelector('.theme-icon');
     
-    // Check for saved theme preference or default to dark mode
+    // Function to update cursor for theme (will be defined after cursor creation)
+    let updateCursorForTheme = null;
+    
+    // Check for saved theme preference or default to dark
     const currentTheme = localStorage.getItem('theme') || 'dark';
-    if (currentTheme === 'light') {
-        body.classList.add('light-mode');
+    html.setAttribute('data-theme', currentTheme);
+    if (currentTheme === 'light' && themeIcon) {
+        themeIcon.textContent = '◑';
     }
     
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             
-            // Save theme preference
-            const theme = body.classList.contains('light-mode') ? 'light' : 'dark';
-            localStorage.setItem('theme', theme);
+            // Update theme
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
             
-            // Update navbar background immediately
-            const isLightMode = body.classList.contains('light-mode');
-            const currentScroll = window.pageYOffset;
-            if (currentScroll > 100) {
-                navbar.style.background = isLightMode ? 'rgba(250, 250, 250, 0.95)' : 'rgba(10, 10, 10, 0.95)';
-            } else {
-                navbar.style.background = isLightMode ? 'rgba(250, 250, 250, 0.8)' : 'rgba(10, 10, 10, 0.8)';
+            // Update icon
+            if (themeIcon) {
+                themeIcon.textContent = newTheme === 'dark' ? '◐' : '◑';
             }
+            
+            // Update cursor if function exists
+            if (updateCursorForTheme) {
+                updateCursorForTheme();
+            }
+            
+            // Update navbar background
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                navbar.style.background = newTheme === 'light' ? '#FFFFFF' : '#000000';
+            }
+            
+            // Flash effect
+            const flashColor = newTheme === 'dark' ? '#FFFFFF' : '#000000';
+            document.body.style.outline = `3px solid ${flashColor}`;
+            setTimeout(() => {
+                document.body.style.outline = '';
+            }, 100);
         });
     }
+    
+    // ================================
+    // FIT NAME TO WIDTH
+    // ================================
+    function fitNameToWidth() {
+        const heroTitle = document.querySelector('.hero-title');
+        if (!heroTitle) return;
+        
+        const container = heroTitle;
+        const containerWidth = container.offsetWidth;
+        const padding = 8 * 16; // 4rem left + 4rem right = 8rem = 128px
+        const border = 6; // 3px left + 3px right = 6px
+        const availableWidth = containerWidth - padding - border;
+        
+        // Get both name lines
+        const nameLines = heroTitle.querySelectorAll('.name-line');
+        if (nameLines.length === 0) return;
+        
+        // Find the longest line
+        let longestLine = '';
+        nameLines.forEach(line => {
+            const text = line.textContent.trim();
+            if (text.length > longestLine.length) {
+                longestLine = text;
+            }
+        });
+        
+        // Create a temporary element to measure text width
+        const temp = document.createElement('span');
+        temp.style.visibility = 'hidden';
+        temp.style.position = 'absolute';
+        temp.style.whiteSpace = 'nowrap';
+        temp.style.fontFamily = getComputedStyle(heroTitle).fontFamily;
+        temp.style.fontWeight = getComputedStyle(heroTitle).fontWeight;
+        temp.style.letterSpacing = getComputedStyle(heroTitle).letterSpacing;
+        temp.style.textTransform = getComputedStyle(heroTitle).textTransform;
+        temp.textContent = longestLine;
+        document.body.appendChild(temp);
+        
+        // Binary search for optimal font size
+        let minSize = 10;
+        let maxSize = 80; // Reduced max size for better fit
+        let optimalSize = minSize;
+        
+        while (minSize <= maxSize) {
+            const midSize = Math.floor((minSize + maxSize) / 2);
+            temp.style.fontSize = midSize + 'px';
+            const textWidth = temp.offsetWidth;
+            
+            if (textWidth <= availableWidth) {
+                optimalSize = midSize;
+                minSize = midSize + 1;
+            } else {
+                maxSize = midSize - 1;
+            }
+        }
+        
+        document.body.removeChild(temp);
+        heroTitle.style.fontSize = optimalSize + 'px';
+    }
+    
+    // Fit name on load and resize (with debounce)
+    let resizeTimeout;
+    fitNameToWidth();
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(fitNameToWidth, 100);
+    });
     
     // ================================
     // TYPING ANIMATION
@@ -154,27 +242,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // ================================
-    // INTERSECTION OBSERVER FOR REVEALS
+    // INTERSECTION OBSERVER FOR GLITCHY REVEALS
     // ================================
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
+        rootMargin: '0px 0px -50px 0px'
     };
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Remove active class first to reset animation
+                entry.target.classList.remove('active');
+                // Force reflow
+                void entry.target.offsetWidth;
+                // Add active class to trigger glitch animation
                 entry.target.classList.add('active');
+                // Stop observing once animated
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
     
-    // Observe elements with reveal class
-    const revealElements = document.querySelectorAll('.about-section, .work-section, .contact-section, .project-item, .timeline-item');
+    // Observe elements with reveal class - including individual cards and items
+    const revealElements = document.querySelectorAll(
+        '.about-section, .work-section, .contact-section, .footer, ' +
+        '.detail-card, .project-card-expanded, .timeline-item-expanded, ' +
+        '.detail-section, .section-heading, .about-intro, .skill-tag, .contact-link'
+    );
     
-    revealElements.forEach((el, index) => {
+    revealElements.forEach((el) => {
         el.classList.add('reveal');
-        el.style.transitionDelay = `${index * 0.1}s`;
         observer.observe(el);
     });
     
@@ -185,17 +283,35 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastScroll = 0;
     
     function handleNavbarScroll() {
+        if (!navbar) return;
         const currentScroll = window.pageYOffset;
-        const isLightMode = document.body.classList.contains('light-mode');
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const bgColor = currentTheme === 'light' ? '#FFFFFF' : '#000000';
         
         if (currentScroll > 100) {
-            navbar.style.background = isLightMode ? 'rgba(250, 250, 250, 0.95)' : 'rgba(10, 10, 10, 0.95)';
-            navbar.style.backdropFilter = 'blur(20px)';
+            navbar.style.background = bgColor;
+            navbar.style.borderBottomWidth = '2px';
         } else {
-            navbar.style.background = isLightMode ? 'rgba(250, 250, 250, 0.8)' : 'rgba(10, 10, 10, 0.8)';
+            navbar.style.background = bgColor;
+            navbar.style.borderBottomWidth = '2px';
         }
         
         lastScroll = currentScroll;
+    }
+    
+    // Update navbar on theme change
+    const navbarThemeObserver = new MutationObserver(() => {
+        handleNavbarScroll();
+    });
+    if (navbar) {
+        navbarThemeObserver.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+        
+        // Initialize navbar background for current theme
+        const initialTheme = document.documentElement.getAttribute('data-theme');
+        navbar.style.background = initialTheme === 'light' ? '#FFFFFF' : '#000000';
     }
     
     // ================================
@@ -262,10 +378,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // ================================
-    // CUSTOM CURSOR (ALWAYS ON)
+    // CUSTOM CURSOR
     // ================================
     let cursorDot = document.createElement('div');
     cursorDot.className = 'cursor-dot';
+    
     cursorDot.style.cssText = `
         position: fixed;
         width: 65px;
@@ -294,6 +411,46 @@ document.addEventListener('DOMContentLoaded', () => {
         cursorDot.style.opacity = '0';
     });
     
+    // Make cursor transparent when hovering over profile image (works in both modes)
+    const heroImageContainer = document.querySelector('.hero-image-container');
+    if (heroImageContainer) {
+        heroImageContainer.addEventListener('mouseenter', () => {
+            cursorDot.style.mixBlendMode = 'normal';
+            cursorDot.style.background = 'transparent';
+            cursorDot.style.border = '1px solid transparent';
+        });
+        
+        heroImageContainer.addEventListener('mouseleave', () => {
+            // Restore cursor with mix-blend-mode: difference for both modes
+            cursorDot.style.mixBlendMode = 'difference';
+            cursorDot.style.background = 'white';
+            cursorDot.style.border = '1px solid white';
+        });
+    }
+    
+    // Update cursor on theme change
+    updateCursorForTheme = () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        // Use mix-blend-mode: difference in both modes for opposite color effect
+        cursorDot.style.mixBlendMode = 'difference';
+        cursorDot.style.background = 'white';
+        cursorDot.style.border = '1px solid white';
+    };
+    
+    // Listen for theme changes
+    const themeObserver = new MutationObserver(() => {
+        if (updateCursorForTheme) {
+            updateCursorForTheme();
+        }
+    });
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme']
+    });
+    
+    // Initialize cursor for current theme
+    updateCursorForTheme();
+    
     function animateCursor() {
         dotX += (mouseX - dotX) * 0.22;
         dotY += (mouseY - dotY) * 0.22;
@@ -321,7 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ================================
     // TYPING ANIMATION ON BOX HOVER
     // ================================
-    const boxes = document.querySelectorAll('.detail-card, .project-card-expanded, .timeline-item-expanded, .skill-tag, .contact-link');
+    const boxes = document.querySelectorAll('.detail-card, .project-card-expanded, .timeline-item-expanded, .skill-tag');
     
     boxes.forEach(box => {
         const textElements = box.querySelectorAll('h5, p, h3, .project-name-expanded, .project-description, .project-type, .project-year, .timeline-year, .timeline-content h5, .timeline-content p, .timeline-company, span:not(.project-tech-stack span), .link-label, .link-text');
@@ -334,47 +491,93 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        let typingTimeout;
+        let allTimeouts = [];
         let isTyping = false;
+        let currentBox = null;
         
         box.addEventListener('mouseenter', () => {
-            if (isTyping) return;
+            // Cancel any previous animation on other boxes
+            if (currentBox && currentBox !== box) {
+                // Clear all timeouts from previous box
+                allTimeouts.forEach(timeout => clearTimeout(timeout));
+                allTimeouts = [];
+                
+                // Restore previous box immediately
+                const prevTextElements = currentBox.querySelectorAll('h5, p, h3, .project-name-expanded, .project-description, .project-type, .project-year, .timeline-year, .timeline-content h5, .timeline-content p, .timeline-company, span:not(.project-tech-stack span), .link-label, .link-text');
+                prevTextElements.forEach(el => {
+                    const originalText = el.getAttribute('data-original');
+                    if (originalText) {
+                        el.textContent = originalText;
+                    }
+                });
+            }
+            
+            // Clear any existing timeouts for this box
+            allTimeouts.forEach(timeout => clearTimeout(timeout));
+            allTimeouts = [];
+            isTyping = false;
+            
+            currentBox = box;
             isTyping = true;
             
             textElements.forEach((el, index) => {
                 const originalText = originalTexts.get(el);
                 if (!originalText) return;
                 
-                setTimeout(() => {
+                // Store original text in data attribute for quick restoration
+                el.setAttribute('data-original', originalText);
+                
+                const delay = index * 20; // Minimal delay between elements for simultaneous effect
+                
+                const timeoutId = setTimeout(() => {
+                    if (!isTyping || currentBox !== box) return;
+                    
                     el.textContent = '';
                     let charIndex = 0;
                     
+                    // Fast typing speed - complete in ~800ms max for glitch effect
+                    const totalChars = originalText.length;
+                    const typingDuration = 800; // Max 800ms for glitch effect
+                    const delayPerChar = Math.max(1, Math.floor(typingDuration / totalChars));
+                    
                     const typeChar = () => {
+                        if (!isTyping || currentBox !== box || charIndex >= originalText.length) {
+                            return;
+                        }
+                        
+                        el.textContent += originalText[charIndex];
+                        charIndex++;
+                        
                         if (charIndex < originalText.length) {
-                            el.textContent += originalText[charIndex];
-                            charIndex++;
-                            typingTimeout = setTimeout(typeChar, 10);
+                            const timeout = setTimeout(typeChar, delayPerChar);
+                            allTimeouts.push(timeout);
                         }
                     };
                     
                     typeChar();
-                }, index * 100);
+                }, delay);
+                
+                allTimeouts.push(timeoutId);
             });
         });
         
         box.addEventListener('mouseleave', () => {
-            if (typingTimeout) {
-                clearTimeout(typingTimeout);
-            }
+            // Clear all timeouts immediately
+            allTimeouts.forEach(timeout => clearTimeout(timeout));
+            allTimeouts = [];
             isTyping = false;
             
-            // Restore original text immediately
+            // Restore original text instantly
             textElements.forEach(el => {
                 const originalText = originalTexts.get(el);
                 if (originalText) {
                     el.textContent = originalText;
                 }
             });
+            
+            if (currentBox === box) {
+                currentBox = null;
+            }
         });
     });
     
