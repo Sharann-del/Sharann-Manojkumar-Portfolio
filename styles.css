@@ -48,6 +48,103 @@
     --transition: all 0.1s linear;
 }
 
+/* Light Mode */
+[data-theme="light"] {
+    /* Background Colors */
+    --color-bg: #FFFFFF;
+    --color-bg-secondary: #FFFFFF;
+    --color-text: #000000;
+    --color-text-light: #000000;
+    --color-border: #000000;
+    
+    /* Hover Colors */
+    --color-hover: #000000;
+    --color-hover-text: #FFFFFF;
+    
+    /* Darker Neon Colors for Light Mode */
+    --neon-cyan: #0099CC;
+    --neon-magenta: #CC00CC;
+    --neon-yellow: #CCCC00;
+    --neon-green: #00CC00;
+    --neon-pink: #CC0066;
+    --neon-blue: #0099CC;
+    --neon-orange: #CC4400;
+    --neon-purple: #6600AA;
+    --neon-lime: #22AA22;
+    --neon-red: #CC0020;
+}
+
+/* Navbar specific - ensure it uses bg color in light mode */
+[data-theme="light"] .navbar {
+    background: var(--color-bg) !important;
+}
+
+/* Light mode hover effects - invert to black background with white text */
+[data-theme="light"] .detail-card:hover,
+[data-theme="light"] .detail-card:nth-child(2):hover,
+[data-theme="light"] .detail-card:nth-child(3):hover,
+[data-theme="light"] .timeline-item-expanded:hover,
+[data-theme="light"] .timeline-item-expanded:nth-child(2):hover,
+[data-theme="light"] .timeline-item-expanded:nth-child(3):hover,
+[data-theme="light"] .skill-tag:hover,
+[data-theme="light"] .project-card-expanded:hover,
+[data-theme="light"] .contact-link:hover,
+[data-theme="light"] .back-to-top:hover {
+    background: #000000 !important;
+    color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+    border-right: 2px solid #000000 !important;
+    border-bottom: 2px solid #000000 !important;
+    border-left: 2px solid #000000 !important;
+    border-top: 2px solid #000000 !important;
+}
+
+[data-theme="light"] .detail-card:hover h5,
+[data-theme="light"] .detail-card:hover p,
+[data-theme="light"] .detail-card:hover h5::before,
+[data-theme="light"] .timeline-item-expanded:hover .timeline-year,
+[data-theme="light"] .timeline-item-expanded:hover h5,
+[data-theme="light"] .timeline-item-expanded:hover .timeline-company,
+[data-theme="light"] .timeline-item-expanded:hover p,
+[data-theme="light"] .project-card-expanded:hover .project-type,
+[data-theme="light"] .project-card-expanded:hover .project-year,
+[data-theme="light"] .project-card-expanded:hover .project-name-expanded,
+[data-theme="light"] .project-card-expanded:hover .project-description,
+[data-theme="light"] .project-card-expanded:hover .project-tech-stack span,
+[data-theme="light"] .project-card-expanded:hover .project-link-expanded,
+[data-theme="light"] .project-card-expanded:hover .project-name-expanded::before,
+[data-theme="light"] .contact-link:hover .link-label,
+[data-theme="light"] .contact-link:hover .link-text {
+    color: #FFFFFF !important;
+}
+
+[data-theme="light"] .project-card-expanded:hover .project-tech-stack span {
+    background: #000000 !important;
+    color: #FFFFFF !important;
+    border: 2px solid #FFFFFF !important;
+    border-color: #FFFFFF !important;
+}
+
+[data-theme="light"] .nav-link:hover {
+    color: #FFFFFF !important;
+    background: #000000 !important;
+}
+
+[data-theme="light"] .nav-link:hover::after {
+    background: #FFFFFF;
+}
+
+[data-theme="light"] .nav-logo a:hover {
+    background: #000000 !important;
+    color: #FFFFFF;
+    outline-color: #FFFFFF;
+}
+
+[data-theme="light"] .theme-toggle:hover {
+    background: #000000 !important;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
 
 /* ================================
    RESET & BASE
@@ -263,7 +360,33 @@ section {
     height: 3px;
 }
 
+.theme-toggle {
+    background: var(--color-bg);
+    border: 2px solid var(--color-border);
+    border-radius: 0;
+    color: var(--color-text);
+    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: none !important;
+    transition: var(--transition);
+    margin-right: 1rem;
+    font-weight: 700;
+}
 
+.theme-toggle:hover {
+    background: #FFFFFF !important;
+    color: #000000;
+    border: 2px solid #000000;
+}
+
+.theme-icon {
+    display: block;
+    transition: transform 0.4s ease;
+}
 
 .mobile-menu-toggle {
     display: none;
@@ -1366,6 +1489,12 @@ section {
         padding: 1rem 0;
     }
     
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+        margin-right: 0.5rem;
+    }
     
     .mobile-menu-toggle {
         display: flex;
