@@ -17,55 +17,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // ================================
-    // THEME TOGGLE
+    // THEME (Dark mode only)
     // ================================
-    const themeToggle = document.getElementById('themeToggle');
     const html = document.documentElement;
-    const themeIcon = document.querySelector('.theme-icon');
     
     // Function to update cursor for theme (will be defined after cursor creation)
     let updateCursorForTheme = null;
     
-    // Check for saved theme preference or default to dark
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    html.setAttribute('data-theme', currentTheme);
-    if (currentTheme === 'light' && themeIcon) {
-        themeIcon.textContent = '◑';
-    }
-    
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            // Update theme
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            // Update icon
-            if (themeIcon) {
-                themeIcon.textContent = newTheme === 'dark' ? '◐' : '◑';
-            }
-            
-            // Update cursor if function exists
-            if (updateCursorForTheme) {
-                updateCursorForTheme();
-            }
-            
-            // Update navbar background
-            const navbar = document.getElementById('navbar');
-            if (navbar) {
-                navbar.style.background = newTheme === 'light' ? '#FFFFFF' : '#000000';
-            }
-            
-            // Flash effect
-            const flashColor = newTheme === 'dark' ? '#FFFFFF' : '#000000';
-            document.body.style.outline = `3px solid ${flashColor}`;
-            setTimeout(() => {
-                document.body.style.outline = '';
-            }, 100);
-        });
-    }
+    // Always use dark theme
+    html.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
     
     // ================================
     // FIT NAME TO WIDTH
@@ -285,33 +246,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleNavbarScroll() {
         if (!navbar) return;
         const currentScroll = window.pageYOffset;
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const bgColor = currentTheme === 'light' ? '#FFFFFF' : '#000000';
         
         if (currentScroll > 100) {
-            navbar.style.background = bgColor;
+            navbar.style.background = '#000000';
             navbar.style.borderBottomWidth = '2px';
         } else {
-            navbar.style.background = bgColor;
+            navbar.style.background = '#000000';
             navbar.style.borderBottomWidth = '2px';
         }
         
         lastScroll = currentScroll;
     }
     
-    // Update navbar on theme change
-    const navbarThemeObserver = new MutationObserver(() => {
-        handleNavbarScroll();
-    });
+    // Initialize navbar background
     if (navbar) {
-        navbarThemeObserver.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ['data-theme']
-        });
-        
-        // Initialize navbar background for current theme
-        const initialTheme = document.documentElement.getAttribute('data-theme');
-        navbar.style.background = initialTheme === 'light' ? '#FFFFFF' : '#000000';
+        navbar.style.background = '#000000';
     }
     
     // ================================
@@ -428,27 +377,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Update cursor on theme change
+    // Update cursor (dark mode only)
     updateCursorForTheme = () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        // Use mix-blend-mode: difference in both modes for opposite color effect
+        // Use mix-blend-mode: difference for opposite color effect
         cursorDot.style.mixBlendMode = 'difference';
         cursorDot.style.background = 'white';
         cursorDot.style.border = '1px solid white';
     };
     
-    // Listen for theme changes
-    const themeObserver = new MutationObserver(() => {
-        if (updateCursorForTheme) {
-            updateCursorForTheme();
-        }
-    });
-    themeObserver.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ['data-theme']
-    });
-    
-    // Initialize cursor for current theme
+    // Initialize cursor
     updateCursorForTheme();
     
     function animateCursor() {
