@@ -1,121 +1,55 @@
-# Sharann Manojkumar - Portfolio
+# Portfolio Website
 
-A modern, minimalist portfolio website showcasing iOS and Full-Stack development work.
+A premium, modern portfolio website showcasing my work as an iOS Developer and Full-Stack Web Developer.
 
-## 🎨 Design Philosophy
+## Features
 
-This portfolio is inspired by modern minimalist web design with a focus on:
-- **Clean Typography** - Using Inter and Space Grotesk fonts for optimal readability
-- **Smooth Animations** - Letter-by-letter name reveal and scroll-based interactions
-- **Responsive Design** - Optimized for all devices from mobile to desktop
-- **Performance** - Lightweight, fast-loading, and optimized animations
-- **Accessibility** - Semantic HTML, reduced motion support, and keyboard navigation
+- **Premium Design**: Black and white theme with cyan accent colors on hover
+- **Responsive Layout**: Fully responsive design that works on all devices
+- **Smooth Animations**: Elegant fade-in and scroll animations
+- **Interactive Navigation**: Smooth scrolling with active section highlighting
+- **Mobile-Friendly**: Hamburger menu for mobile devices
 
-## 🚀 Features
+## Sections
 
-### Design Elements
-- Single-page layout with smooth scroll navigation
-- Animated hero title with letter-by-letter reveal
-- Parallax effects on hero image
-- Scroll progress indicator
-- Intersection Observer-based content reveals
-- Custom cursor trail (desktop only)
-- Mobile-optimized responsive design
+1. **Home**: Hero section with name and introduction
+2. **About**: Detailed information about background and interests
+3. **Skills**: Showcase of programming languages and technologies
+4. **Projects**: Portfolio of iOS apps and web development projects
+5. **Experiences**: Professional experience and internships
+6. **Resume**: Placeholder for resume (to be updated later)
 
-### Sections
-1. **Hero** - Large animated name with role title
-2. **About** - Bio, skills timeline, and tech stack
-3. **Projects** - Clean list of selected work with hover effects
-4. **Contact** - Social links and contact information
+## Technologies Used
 
-## 🛠️ Technologies Used
+- HTML5
+- CSS3 (with CSS Variables)
+- Vanilla JavaScript
+- Google Fonts (Inter & Playfair Display)
 
-- **HTML5** - Semantic markup
-- **CSS3** - Custom properties, Grid, Flexbox, animations
-- **Vanilla JavaScript** - No frameworks, lightweight interactions
-- **Google Fonts** - Inter & Space Grotesk
+## Getting Started
 
-## 📁 File Structure
+Simply open `index.html` in your web browser. No build process or dependencies required.
 
-```
-Portfolio/
-├── index.html          # Main HTML file
-├── styles.css          # All styles and animations
-├── script.js           # JavaScript interactions
-├── picture.jpg         # Profile image
-├── Resume.pdf          # Downloadable resume
-├── favicon.svg         # Site icon
-└── README.md           # This file
-```
+## Customization
 
-## 🎯 Key Features Explained
+The color scheme can be easily customized by modifying the CSS variables in `styles.css`:
 
-### Animated Name Reveal
-The hero section features a letter-by-letter animation that reveals your name with a sliding and rotating effect. Each letter has a staggered delay for a smooth cascade effect.
-
-### Scroll Interactions
-- **Progress Bar**: Top bar that fills as you scroll
-- **Navbar**: Subtle background change on scroll
-- **Parallax**: Hero image moves slower than scroll speed
-- **Reveals**: Sections fade in as they enter viewport
-
-### Responsive Design
-- Desktop: Full features including cursor trail and parallax
-- Tablet: Optimized grid layouts
-- Mobile: Hamburger menu, stacked layouts, touch-optimized
-
-## 🌐 Browser Support
-
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-## 🔧 Customization
-
-### Colors
-Edit CSS variables in `styles.css`:
 ```css
 :root {
-    --color-bg: #FAFAFA;
-    --color-text: #0A0A0A;
-    --color-text-light: #666666;
-    --color-border: #E5E5E5;
+    --accent-color: #00d4ff;
+    --accent-hover: #00b8e6;
+    /* ... other variables */
 }
 ```
 
-### Content
-Update information in `index.html`:
-- Hero title and role
-- About section bio
-- Timeline items
-- Projects list
-- Contact links
+## Browser Support
 
-### Fonts
-Replace font imports in HTML `<head>` to use different typefaces.
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-## 📱 Contact
+## License
 
-Update the contact links in the HTML file with your actual:
-- Email address
-- GitHub profile
-- LinkedIn profile
-- Other social links
+© 2025 Sharann Manojkumar. All rights reserved.
 
-## 🎨 Design Inspiration
-
-This portfolio draws inspiration from modern minimalist web design trends, focusing on:
-- Typography as a design element
-- Generous whitespace
-- Subtle animations
-- Clean navigation
-- Mobile-first approach
-
-## 📄 License
-
-Personal portfolio - feel free to use as inspiration for your own site!
-
----
-
-**Built with attention to detail** ✨
