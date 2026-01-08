@@ -10,121 +10,186 @@
 </head>
 
 <body>
+    <div class="site-loader" id="siteLoader">
+        <div class="loader-content">
+            <div class="loader-text">SHARANN MANOJKUMAR</div>
+            <div class="loader-subtext">LOADING...</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-progress" id="scrollProgress"></div>
     <nav class="navbar">
         <div class="container nav-container">
             <div class="nav-logo">
-                <a href="index.html">Sharann Manojkumar</a>
+                <a href="index.html" class="page-transition">Sharann Manojkumar</a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="tools.html" class="nav-link">Tools</a></li>
-                <li><a href="work.html" class="nav-link">Work</a></li>
-                <li><a href="experience.html" class="nav-link">Exp</a></li>
-                <li><a href="resume.html" class="nav-link">Resume</a></li>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link page-transition" data-page="home">Home</a></li>
+                <li><a href="about.html" class="nav-link page-transition" data-page="about">About</a></li>
+                <li><a href="tools.html" class="nav-link page-transition" data-page="tools">Tools</a></li>
+                <li><a href="work.html" class="nav-link page-transition active" data-page="work">Work</a></li>
+                <li><a href="experience.html" class="nav-link page-transition" data-page="experience">Exp</a></li>
+                <li><a href="resume.html" class="nav-link page-transition" data-page="resume">Resume</a></li>
             </ul>
         </div>
     </nav>
 
-    <section id="projects">
+    <section id="work" class="section-full page-content">
         <div class="container">
             <h2 class="section-title">Selected Work</h2>
-            <div class="projects-grid">
+            <div class="projects-grid-expanded">
 
                 <!-- TreeGPT -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">TreeGPT</h3>
-                        <span class="project-type">WEB APP</span>
+                <article class="project-card-expanded">
+                    <div class="project-header-expanded">
+                        <div class="project-meta-expanded">
+                            <span class="project-type">Web Application</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3 class="project-name-expanded">TreeGPT</h3>
                     </div>
-                    <div class="project-body">
-                        <p>A hierarchical problem-solving system with tree visualization that uses ChatGPT (OpenAI API)
-                            to solve problems and sub-problems with backtracking and context-aware reasoning.</p>
+                    <p class="project-description-expanded">
+                        A hierarchical problem-solving system with tree visualization that uses ChatGPT (OpenAI API)
+                        to solve problems and sub-problems with backtracking and context-aware reasoning.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span>React</span>
+                        <span>OpenAI API</span>
+                        <span>Node.js</span>
+                        <span>D3.js</span>
                     </div>
-                    <div class="project-footer">
-                        <a href="https://github.com/Sharann-del/TreeGPT" target="_blank" class="project-link">View
-                            Source -></a>
-                    </div>
+                    <a href="https://github.com/Sharann-del/TreeGPT" target="_blank" class="project-link-expanded">
+                        View on GitHub →
+                    </a>
                 </article>
 
                 <!-- Notion Widgets -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Notion Widgets</h3>
-                        <span class="project-type">iOS APP</span>
+                <article class="project-card-expanded">
+                    <div class="project-header-expanded">
+                        <div class="project-meta-expanded">
+                            <span class="project-type">iOS Application</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3 class="project-name-expanded">Notion Widgets</h3>
                     </div>
-                    <div class="project-body">
-                        <p>An iOS app that allows users to connect their Notion account securely and display database
-                            information directly on home screen widgets.</p>
+                    <p class="project-description-expanded">
+                        An iOS app that allows users to connect their Notion account securely and display database
+                        information directly on home screen widgets.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span>Swift</span>
+                        <span>SwiftUI</span>
+                        <span>WidgetKit</span>
+                        <span>Notion API</span>
                     </div>
-                    <div class="project-footer">
-                        <a href="https://github.com/Sharann-del/NotionWidgets" target="_blank" class="project-link">View
-                            Source -></a>
-                    </div>
+                    <a href="https://github.com/Sharann-del/NotionWidgets" target="_blank"
+                        class="project-link-expanded">
+                        View on GitHub →
+                    </a>
                 </article>
 
-                <!-- Student Planner -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Student Planner</h3>
-                        <span class="project-type">iOS APP</span>
+                <!-- Planner -->
+                <article class="project-card-expanded">
+                    <div class="project-header-expanded">
+                        <div class="project-meta-expanded">
+                            <span class="project-type">iOS Application</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3 class="project-name-expanded">Student Planner</h3>
                     </div>
-                    <div class="project-body">
-                        <p>A Planner app that assists students in organizing schedules, classes, calendar events,
-                            managing to-dos, and tracking classes through Live Activities.</p>
+                    <p class="project-description-expanded">
+                        A Planner app that assists students in organizing schedules, classes, calendar events,
+                        managing to-dos, and tracking classes through Live Activities.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span>SwiftUI</span>
+                        <span>Core Data</span>
+                        <span>Live Activities</span>
+                        <span>EventKit</span>
                     </div>
-                    <div class="project-footer">
-                        <a href="https://github.com/Sharann-del/Planner" target="_blank" class="project-link">View
-                            Source -></a>
-                    </div>
+                    <a href="https://github.com/Sharann-del/Planner" target="_blank" class="project-link-expanded">
+                        View on GitHub →
+                    </a>
                 </article>
 
                 <!-- Billing System -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Billing System</h3>
-                        <span class="project-type">WEB APP</span>
+                <article class="project-card-expanded">
+                    <div class="project-header-expanded">
+                        <div class="project-meta-expanded">
+                            <span class="project-type">Full-Stack Application</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3 class="project-name-expanded">Billing & Inventory System</h3>
                     </div>
-                    <div class="project-body">
-                        <p>A web-based centralized billing and stock management system developed during an internship at
-                            Geo Pacific Solutions.</p>
+                    <p class="project-description-expanded">
+                        A web-based centralized billing and stock management system developed during an internship at
+                        Geo Pacific Solutions. A Tally-inspired system for managing inventory, generating invoices, and
+                        tracking stock levels.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>PostgreSQL</span>
+                        <span>Express</span>
                     </div>
-                    <div class="project-footer">
-                        <a href="https://github.com/Sharann-del/billing-system" target="_blank"
-                            class="project-link">View Source -></a>
-                    </div>
+                    <a href="https://github.com/Sharann-del/billing-system" target="_blank"
+                        class="project-link-expanded">
+                        View on GitHub →
+                    </a>
                 </article>
 
                 <!-- ToDo List -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">ToDo List</h3>
-                        <span class="project-type">iOS APP</span>
+                <article class="project-card-expanded">
+                    <div class="project-header-expanded">
+                        <div class="project-meta-expanded">
+                            <span class="project-type">iOS Application</span>
+                            <span class="project-year">2023</span>
+                        </div>
+                        <h3 class="project-name-expanded">ToDo List</h3>
                     </div>
-                    <div class="project-body">
-                        <p>A productivity-focused iOS application for managing tasks and to-do lists with an intuitive
-                            user interface.</p>
+                    <p class="project-description-expanded">
+                        A productivity-focused iOS application for managing tasks and to-do lists with an intuitive
+                        user interface.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span>Swift</span>
+                        <span>SwiftUI</span>
+                        <span>Core Data</span>
                     </div>
-                    <div class="project-footer">
-                        <a href="https://github.com/Sharann-del/ToDoList" target="_blank" class="project-link">View
-                            Source -></a>
-                    </div>
+                    <a href="https://github.com/Sharann-del/ToDoList" target="_blank" class="project-link-expanded">
+                        View on GitHub →
+                    </a>
                 </article>
 
                 <!-- Icons Project -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">1200 iOS Icons</h3>
-                        <span class="project-type">DESIGN</span>
+                <article class="project-card-expanded">
+                    <div class="project-header-expanded">
+                        <div class="project-meta-expanded">
+                            <span class="project-type">Design Project</span>
+                            <span class="project-year">2023</span>
+                        </div>
+                        <h3 class="project-name-expanded">1200 iOS Icons</h3>
                     </div>
-                    <div class="project-body">
-                        <p>A premium collection of 1200 minimalistic iOS app icons featuring 8 color themes and
-                            wallpapers.</p>
+                    <p class="project-description-expanded">
+                        A premium collection of 1200 minimalistic iOS app icons featuring 8 color themes and
+                        wallpapers. Perfect for users seeking a personalized home screen experience.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span>Figma</span>
+                        <span>Design Systems</span>
+                        <span>UI/UX</span>
                     </div>
-                    <div class="project-footer">
-                        <a href="https://sites.google.com/view/sharannsicons/home" target="_blank"
-                            class="project-link">View Project -></a>
-                    </div>
+                    <a href="https://sites.google.com/view/sharannsicons/home" target="_blank"
+                        class="project-link-expanded">
+                        View Collection →
+                    </a>
                 </article>
 
             </div>

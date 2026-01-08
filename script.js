@@ -1,21 +1,78 @@
-// Site Loader Animation
+// Advanced Site Loader Animation
 document.addEventListener('DOMContentLoaded', () => {
     const siteLoader = document.getElementById('siteLoader');
     const body = document.body;
+
+    // Check if this is a page transition (via sessionStorage)
+    const isPageTransition = sessionStorage.getItem('pageTransition') === 'true';
     
-    // Add loaded class to body after loader fades out
-    setTimeout(() => {
-        if (siteLoader) {
-            body.classList.add('loaded');
+    if (isPageTransition && siteLoader) {
+        // Hide loader immediately for page transitions
+        siteLoader.style.display = 'none';
+        body.classList.add('loaded');
+        sessionStorage.removeItem('pageTransition');
+    } else if (siteLoader) {
+        // Advanced loader animations for first load
+        const loaderText = document.getElementById('loaderText');
+        const loaderPercentage = document.getElementById('loaderPercentage');
+        const loaderProgress = document.getElementById('loaderProgress');
+        
+        // Split text into individual letters for animation
+        if (loaderText) {
+            const text = loaderText.textContent;
+            loaderText.innerHTML = text.split('').map((char, index) => {
+                if (char === ' ') {
+                    return '<span style="width: 0.2em; display: inline-block;"></span>';
+                }
+                return `<span>${char}</span>`;
+            }).join('');
         }
-    }, 4000);
-    
-    // Remove loader from DOM after transition completes
-    setTimeout(() => {
-        if (siteLoader) {
-            siteLoader.style.display = 'none';
+        
+        // Animate percentage counter
+        if (loaderPercentage && loaderProgress) {
+            let progress = 0;
+            const duration = 2000; // 2 seconds
+            const startTime = Date.now() + 1800; // Start after 1.8s delay
+            const interval = 16; // ~60fps
+            
+            const updateProgress = () => {
+                const elapsed = Date.now() - startTime;
+                if (elapsed < 0) {
+                    requestAnimationFrame(updateProgress);
+                    return;
+                }
+                
+                progress = Math.min((elapsed / duration) * 100, 100);
+                const roundedProgress = Math.floor(progress);
+                
+                if (loaderPercentage) {
+                    loaderPercentage.textContent = `${roundedProgress}%`;
+                }
+                
+                if (progress < 100) {
+                    requestAnimationFrame(updateProgress);
+                } else {
+                    loaderPercentage.textContent = '100%';
+                }
+            };
+            
+            requestAnimationFrame(updateProgress);
         }
-    }, 5000);
+        
+        // Show full loader animation on first load
+        setTimeout(() => {
+            if (siteLoader) {
+                body.classList.add('loaded');
+            }
+        }, 3500);
+
+        // Remove loader from DOM after transition completes
+        setTimeout(() => {
+            if (siteLoader) {
+                siteLoader.style.display = 'none';
+            }
+        }, 4800);
+    }
 });
 
 // Custom Cursor
@@ -72,29 +129,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
     const heroImage = document.querySelector('.hero-image-wrapper');
-    
+
     // Function to get current section
     function getCurrentSection() {
         let currentSection = 'home';
-        const scrollPosition = window.scrollY + 150; // Offset for navbar height
-        
+        const scrollPosition = window.scrollY + 200; // Offset for navbar height
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
             const sectionId = section.getAttribute('id');
-            
+
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                 currentSection = sectionId;
             }
         });
-        
+
         return currentSection;
     }
-    
+
     // Function to update active nav link
     function updateActiveNavLink() {
         const currentSection = getCurrentSection();
-        
+
         navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('data-section') === currentSection) {
@@ -102,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     // Subtle Parallax Effect
     function parallaxEffect() {
         const scrolled = window.pageYOffset;
@@ -110,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heroImage.style.transform = `translateY(${scrolled * 0.3}px) rotate(0deg)`;
         }
     }
-    
+
     // Scroll Progress Bar
     const progressBar = document.getElementById('scrollProgress');
     function updateScrollProgress() {
@@ -120,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             progressBar.style.width = scrolled + '%';
         }
     }
-    
+
     // Back to Top Button
     const backToTopBtn = document.getElementById('backToTop');
     function toggleBackToTop() {
@@ -130,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
             backToTopBtn.classList.remove('visible');
         }
     }
-    
+
     if (backToTopBtn) {
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({
@@ -139,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-    
+
     // Update on scroll with throttling for performance
     let scrollTimeout;
     window.addEventListener('scroll', () => {
@@ -153,14 +210,14 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleBackToTop();
         });
     }, { passive: true });
-    
+
     // Initial update
     updateActiveNavLink();
 
     // Mobile Menu Toggle
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const navMenu = document.getElementById('navMenu');
-    
+
     if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener('click', () => {
             mobileMenuToggle.classList.toggle('active');
@@ -191,10 +248,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     const revealElements = document.querySelectorAll('.project-card, .project-card-expanded, .about-card-expanded, .experience-card-expanded, .skill-badge, .experience-item, .section-title, .hero-text, .hero-image-wrapper, .hero-description, .resume-preview, .dev-box');
-    
+
     let projectIndex = 0;
     let skillIndex = 0;
-    
+
     revealElements.forEach((el) => {
         el.classList.add('reveal');
         if (el.classList.contains('project-card') || el.classList.contains('project-card-expanded')) {
@@ -261,5 +318,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
 
 console.log("SYSTEM READY");

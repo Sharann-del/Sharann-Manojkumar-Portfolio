@@ -10,23 +10,38 @@
 </head>
 
 <body>
+    <div class="site-loader" id="siteLoader">
+        <div class="loader-content">
+            <div class="loader-text">SHARANN MANOJKUMAR</div>
+            <div class="loader-subtext">LOADING...</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-progress" id="scrollProgress"></div>
     <nav class="navbar">
         <div class="container nav-container">
             <div class="nav-logo">
-                <a href="index.html">Sharann Manojkumar</a>
+                <a href="index.html" class="page-transition">Sharann Manojkumar</a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="tools.html" class="nav-link">Tools</a></li>
-                <li><a href="work.html" class="nav-link">Work</a></li>
-                <li><a href="experience.html" class="nav-link">Exp</a></li>
-                <li><a href="resume.html" class="nav-link">Resume</a></li>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link page-transition" data-page="home">Home</a></li>
+                <li><a href="about.html" class="nav-link page-transition active" data-page="about">About</a></li>
+                <li><a href="tools.html" class="nav-link page-transition" data-page="tools">Tools</a></li>
+                <li><a href="work.html" class="nav-link page-transition" data-page="work">Work</a></li>
+                <li><a href="experience.html" class="nav-link page-transition" data-page="experience">Exp</a></li>
+                <li><a href="resume.html" class="nav-link page-transition" data-page="resume">Resume</a></li>
             </ul>
         </div>
     </nav>
 
-    <section id="about">
+    <section id="about" class="section-full page-content">
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="experience-item">
@@ -39,18 +54,48 @@
                     college. In this position, I work with other developers, help out in the student tech initiatives,
                     and constantly work on getting my technical skills up to par through project-based learning.
                 </p>
-                <div class="hero-description" style="width: 100%; max-width: 100%; margin-top: 2rem;">
-                    <h3 style="margin-bottom: 1rem; font-family: var(--font-heading);">iOS Development</h3>
-                    <p>Xcode is my primary development environment, and I am developing iOS applications using both
-                        Swift and SwiftUI. Currently working on productivity-focused apps including Notion Widgets and
-                        Student Planner.</p>
-                </div>
-                <div class="hero-description"
-                    style="width: 100%; max-width: 100%; margin-top: 2rem; background: var(--accent-yellow);">
-                    <h3 style="margin-bottom: 1rem; font-family: var(--font-heading);">Full-Stack Web Development</h3>
-                    <p>Experienced in building web-based systems with Node.js, TypeScript, and PostgreSQL. Worked on a
-                        centralized billing and stock management system during my internship at Geo Pacific Solutions.
-                    </p>
+                <div class="about-cards-grid">
+                    <article class="about-card-expanded">
+                        <div class="about-card-header-expanded">
+                            <div class="about-card-meta-expanded">
+                                <span class="about-card-type">Development Focus</span>
+                            </div>
+                            <h3 class="about-card-name-expanded">iOS Development</h3>
+                        </div>
+                        <p class="about-card-description-expanded">
+                            Xcode is my primary development environment, and I am developing iOS applications using both
+                            Swift and SwiftUI. Currently working on productivity-focused apps including Notion Widgets
+                            and
+                            Student Planner.
+                        </p>
+                        <div class="about-card-tech-stack">
+                            <span>Swift</span>
+                            <span>SwiftUI</span>
+                            <span>Xcode</span>
+                            <span>WidgetKit</span>
+                        </div>
+                    </article>
+
+                    <article class="about-card-expanded">
+                        <div class="about-card-header-expanded">
+                            <div class="about-card-meta-expanded">
+                                <span class="about-card-type">Development Focus</span>
+                            </div>
+                            <h3 class="about-card-name-expanded">Full-Stack Web Development</h3>
+                        </div>
+                        <p class="about-card-description-expanded">
+                            Experienced in building web-based systems with Node.js, TypeScript, and PostgreSQL. Worked
+                            on a
+                            centralized billing and stock management system during my internship at Geo Pacific
+                            Solutions.
+                        </p>
+                        <div class="about-card-tech-stack">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>TypeScript</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </article>
                 </div>
             </div>
         </div>

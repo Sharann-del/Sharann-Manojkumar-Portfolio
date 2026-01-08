@@ -10,39 +10,62 @@
 </head>
 
 <body>
+    <div class="site-loader" id="siteLoader">
+        <div class="loader-content">
+            <div class="loader-text">SHARANN MANOJKUMAR</div>
+            <div class="loader-subtext">LOADING...</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-progress" id="scrollProgress"></div>
     <nav class="navbar">
         <div class="container nav-container">
             <div class="nav-logo">
-                <a href="index.html">Sharann Manojkumar</a>
+                <a href="index.html" class="page-transition">Sharann Manojkumar</a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="tools.html" class="nav-link">Tools</a></li>
-                <li><a href="work.html" class="nav-link">Work</a></li>
-                <li><a href="experience.html" class="nav-link">Exp</a></li>
-                <li><a href="resume.html" class="nav-link">Resume</a></li>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link page-transition" data-page="home">Home</a></li>
+                <li><a href="about.html" class="nav-link page-transition" data-page="about">About</a></li>
+                <li><a href="tools.html" class="nav-link page-transition" data-page="tools">Tools</a></li>
+                <li><a href="work.html" class="nav-link page-transition" data-page="work">Work</a></li>
+                <li><a href="experience.html" class="nav-link page-transition active" data-page="experience">Exp</a></li>
+                <li><a href="resume.html" class="nav-link page-transition" data-page="resume">Resume</a></li>
             </ul>
         </div>
     </nav>
 
-    <section id="experience" class="v-center">
+    <section id="experience" class="section-full v-center page-content">
         <div class="container">
             <h2 class="section-title">Experience</h2>
 
-            <div class="experience-item">
-                <span class="experience-date">2024</span>
-                <h3 class="experience-role">Full Stack Developer</h3>
-                <span class="experience-company">Geo Pacific Solutions</span>
-                <p>
-                    Developed a Tally-like billing system focusing on inventory tracking and invoicing. Worked with a
-                    team of 6 developers in a project-based learning environment.
-                </p>
-                <ul style="margin-top: 1rem; list-style-position: inside;">
-                    <li>Built responsive UI modules using React/Next.js.</li>
-                    <li>Designed PostgreSQL schema for inventory management.</li>
-                    <li>Integrated real-time PDF invoicing generation.</li>
-                </ul>
+            <div class="experience-grid-expanded">
+                <article class="experience-card-expanded">
+                    <div class="experience-header-expanded">
+                        <div class="experience-meta-expanded">
+                            <span class="experience-type">Internship</span>
+                            <span class="experience-year">2024</span>
+                        </div>
+                        <h3 class="experience-name-expanded">Full Stack Developer</h3>
+                        <span class="experience-company-expanded">Geo Pacific Solutions</span>
+                    </div>
+                    <p class="experience-description-expanded">
+                        Developed a Tally-like billing system focusing on inventory tracking and invoicing. Worked with
+                        a
+                        team of 6 developers in a project-based learning environment.
+                    </p>
+                    <div class="experience-achievements">
+                        <span>React/Next.js UI</span>
+                        <span>PostgreSQL Schema</span>
+                        <span>PDF Generation</span>
+                    </div>
+                </article>
             </div>
 
         </div>

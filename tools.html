@@ -10,26 +10,42 @@
 </head>
 
 <body>
+    <div class="site-loader" id="siteLoader">
+        <div class="loader-content">
+            <div class="loader-text">SHARANN MANOJKUMAR</div>
+            <div class="loader-subtext">LOADING...</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-progress" id="scrollProgress"></div>
     <nav class="navbar">
         <div class="container nav-container">
             <div class="nav-logo">
-                <a href="index.html">Sharann Manojkumar</a>
+                <a href="index.html" class="page-transition">Sharann Manojkumar</a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="tools.html" class="nav-link">Tools</a></li>
-                <li><a href="work.html" class="nav-link">Work</a></li>
-                <li><a href="experience.html" class="nav-link">Exp</a></li>
-                <li><a href="resume.html" class="nav-link">Resume</a></li>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link page-transition" data-page="home">Home</a></li>
+                <li><a href="about.html" class="nav-link page-transition" data-page="about">About</a></li>
+                <li><a href="tools.html" class="nav-link page-transition active" data-page="tools">Tools</a></li>
+                <li><a href="work.html" class="nav-link page-transition" data-page="work">Work</a></li>
+                <li><a href="experience.html" class="nav-link page-transition" data-page="experience">Exp</a></li>
+                <li><a href="resume.html" class="nav-link page-transition" data-page="resume">Resume</a></li>
             </ul>
         </div>
     </nav>
 
-    <section id="skills" class="v-center">
+    <section id="tools" class="section-full v-center page-content">
         <div class="container">
             <h2 class="section-title">Tools & Skills</h2>
             <div class="skills-grid">
+                <div class="skill-badge">C</div>
                 <div class="skill-badge">C++</div>
                 <div class="skill-badge">Java</div>
                 <div class="skill-badge">Swift</div>

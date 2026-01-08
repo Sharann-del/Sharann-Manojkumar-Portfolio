@@ -11,11 +11,37 @@
 
 <body>
     <div class="site-loader" id="siteLoader">
+        <div class="loader-background">
+            <div class="loader-shape loader-shape-1"></div>
+            <div class="loader-shape loader-shape-2"></div>
+            <div class="loader-shape loader-shape-3"></div>
+            <div class="loader-shape loader-shape-4"></div>
+            <div class="loader-shape loader-shape-5"></div>
+        </div>
         <div class="loader-content">
-            <div class="loader-text">SHARANN MANOJKUMAR</div>
-            <div class="loader-subtext">INITIALIZING PORTFOLIO...</div>
-            <div class="loader-bar">
-                <div class="loader-progress"></div>
+            <div class="loader-text-wrapper">
+                <div class="loader-text" id="loaderText">SHARANN MANOJKUMAR</div>
+            </div>
+            <div class="loader-subtext-wrapper">
+                <div class="loader-subtext" id="loaderSubtext">INITIALIZING PORTFOLIO</div>
+                <div class="loader-dots">
+                    <span class="dot">.</span>
+                    <span class="dot">.</span>
+                    <span class="dot">.</span>
+                </div>
+            </div>
+            <div class="loader-progress-container">
+                <div class="loader-bar">
+                    <div class="loader-progress" id="loaderProgress"></div>
+                    <div class="loader-progress-shine"></div>
+                </div>
+                <div class="loader-percentage" id="loaderPercentage">0%</div>
+            </div>
+            <div class="loader-tech-stack">
+                <span class="tech-item">iOS</span>
+                <span class="tech-item">React</span>
+                <span class="tech-item">Swift</span>
+                <span class="tech-item">Node.js</span>
             </div>
         </div>
     </div>
@@ -87,7 +113,8 @@
                         </div>
                         <p class="about-card-description-expanded">
                             Xcode is my primary development environment, and I am developing iOS applications using both
-                            Swift and SwiftUI. Currently working on productivity-focused apps including Notion Widgets and
+                            Swift and SwiftUI. Currently working on productivity-focused apps including Notion Widgets
+                            and
                             Student Planner.
                         </p>
                         <div class="about-card-tech-stack">
@@ -106,8 +133,10 @@
                             <h3 class="about-card-name-expanded">Full-Stack Web Development</h3>
                         </div>
                         <p class="about-card-description-expanded">
-                            Experienced in building web-based systems with Node.js, TypeScript, and PostgreSQL. Worked on a
-                            centralized billing and stock management system during my internship at Geo Pacific Solutions.
+                            Experienced in building web-based systems with Node.js, TypeScript, and PostgreSQL. Worked
+                            on a
+                            centralized billing and stock management system during my internship at Geo Pacific
+                            Solutions.
                         </p>
                         <div class="about-card-tech-stack">
                             <span>React</span>
@@ -171,7 +200,7 @@
                         <span>D3.js</span>
                     </div>
                     <a href="https://github.com/Sharann-del/TreeGPT" target="_blank" class="project-link-expanded">
-                        View on GitHub →
+                        <span class="link-text">View on GitHub</span> →
                     </a>
                 </article>
 
@@ -194,8 +223,9 @@
                         <span>WidgetKit</span>
                         <span>Notion API</span>
                     </div>
-                    <a href="https://github.com/Sharann-del/NotionWidgets" target="_blank" class="project-link-expanded">
-                        View on GitHub →
+                    <a href="https://github.com/Sharann-del/NotionWidgets" target="_blank"
+                        class="project-link-expanded">
+                        <span class="link-text">View on GitHub</span> →
                     </a>
                 </article>
 
@@ -219,7 +249,7 @@
                         <span>EventKit</span>
                     </div>
                     <a href="https://github.com/Sharann-del/Planner" target="_blank" class="project-link-expanded">
-                        View on GitHub →
+                        <span class="link-text">View on GitHub</span> →
                     </a>
                 </article>
 
@@ -234,7 +264,8 @@
                     </div>
                     <p class="project-description-expanded">
                         A web-based centralized billing and stock management system developed during an internship at
-                        Geo Pacific Solutions. A Tally-inspired system for managing inventory, generating invoices, and tracking stock levels.
+                        Geo Pacific Solutions. A Tally-inspired system for managing inventory, generating invoices, and
+                        tracking stock levels.
                     </p>
                     <div class="project-tech-stack">
                         <span>React</span>
@@ -242,8 +273,9 @@
                         <span>PostgreSQL</span>
                         <span>Express</span>
                     </div>
-                    <a href="https://github.com/Sharann-del/billing-system" target="_blank" class="project-link-expanded">
-                        View on GitHub →
+                    <a href="https://github.com/Sharann-del/billing-system" target="_blank"
+                        class="project-link-expanded">
+                        <span class="link-text">View on GitHub</span> →
                     </a>
                 </article>
 
@@ -266,7 +298,7 @@
                         <span>Core Data</span>
                     </div>
                     <a href="https://github.com/Sharann-del/ToDoList" target="_blank" class="project-link-expanded">
-                        View on GitHub →
+                        <span class="link-text">View on GitHub</span> →
                     </a>
                 </article>
 
@@ -288,8 +320,9 @@
                         <span>Design Systems</span>
                         <span>UI/UX</span>
                     </div>
-                    <a href="https://sites.google.com/view/sharannsicons/home" target="_blank" class="project-link-expanded">
-                        View Collection →
+                    <a href="https://sites.google.com/view/sharannsicons/home" target="_blank"
+                        class="project-link-expanded">
+                        <span class="link-text">View Collection</span> →
                     </a>
                 </article>
 
@@ -313,7 +346,8 @@
                         <span class="experience-company-expanded">Geo Pacific Solutions</span>
                     </div>
                     <p class="experience-description-expanded">
-                        Developed a Tally-like billing system focusing on inventory tracking and invoicing. Worked with a
+                        Developed a Tally-like billing system focusing on inventory tracking and invoicing. Worked with
+                        a
                         team of 6 developers in a project-based learning environment.
                     </p>
                     <div class="experience-achievements">
