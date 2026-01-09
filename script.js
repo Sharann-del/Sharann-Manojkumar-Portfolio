@@ -107,90 +107,10 @@ const createCustomCursor = () => {
     cursor.className = 'custom-cursor';
     document.body.appendChild(cursor);
 
-    // Cursor position tracking
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-    let trailCount = 0;
-    let lastTrailTime = 0;
-
-    // Smooth cursor following with easing
-    function animateCursor() {
-        const dx = mouseX - cursorX;
-        const dy = mouseY - cursorY;
-        
-        // Smooth easing
-        cursorX += dx * 0.15;
-        cursorY += dy * 0.15;
-        
-        cursor.style.left = cursorX + 'px';
-        cursor.style.top = cursorY + 'px';
-        
-        requestAnimationFrame(animateCursor);
-    }
-
-    // Track mouse position
+    // Track mouse position and update cursor instantly (no lag, no easing)
     document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        // Create trail dots with throttling
-        const now = Date.now();
-        if (now - lastTrailTime > 30) { // Create trail every 30ms
-            createTrail(e.clientX, e.clientY);
-            lastTrailTime = now;
-        }
-    });
-
-    // Create trailing effect dots
-    function createTrail(x, y) {
-        const trail = document.createElement('div');
-        trail.className = 'cursor-trail';
-        trail.style.left = x + 'px';
-        trail.style.top = y + 'px';
-        document.body.appendChild(trail);
-
-        // Remove trail after animation
-        setTimeout(() => {
-            trail.remove();
-        }, 600);
-    }
-
-    // Start animation loop
-    animateCursor();
-
-    // Interactive elements - cursor expands and changes color
-    const hoverElements = document.querySelectorAll('a, button, .btn, .nav-link, .project-card, .project-card-expanded, .about-card-expanded, .experience-card-expanded, .skill-badge, .back-to-top, .mobile-menu-toggle, .project-link, .project-link-expanded, .nav-logo a, .experience-item, .dev-box, .resume-preview');
-
-    hoverElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.classList.add('cursor-hover');
-            el.classList.add('cursor-target-active');
-        });
-
-        el.addEventListener('mouseleave', () => {
-            cursor.classList.remove('cursor-hover');
-            el.classList.remove('cursor-target-active');
-        });
-    });
-
-    // Click effect
-    document.addEventListener('mousedown', () => {
-        cursor.classList.add('cursor-click');
-    });
-
-    document.addEventListener('mouseup', () => {
-        cursor.classList.remove('cursor-click');
-    });
-
-    // Hide cursor when leaving window
-    document.addEventListener('mouseleave', () => {
-        cursor.style.opacity = '0';
-    });
-
-    document.addEventListener('mouseenter', () => {
-        cursor.style.opacity = '1';
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
     });
 
     // Hide cursor when leaving window
