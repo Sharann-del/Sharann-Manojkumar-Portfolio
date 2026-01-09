@@ -11,37 +11,39 @@
 
 <body>
     <div class="site-loader" id="siteLoader">
-        <div class="loader-background">
-            <div class="loader-shape loader-shape-1"></div>
-            <div class="loader-shape loader-shape-2"></div>
-            <div class="loader-shape loader-shape-3"></div>
-            <div class="loader-shape loader-shape-4"></div>
-            <div class="loader-shape loader-shape-5"></div>
-        </div>
-        <div class="loader-content">
-            <div class="loader-text-wrapper">
-                <div class="loader-text" id="loaderText">SHARANN MANOJKUMAR</div>
-            </div>
-            <div class="loader-subtext-wrapper">
-                <div class="loader-subtext" id="loaderSubtext">INITIALIZING PORTFOLIO</div>
-                <div class="loader-dots">
-                    <span class="dot">.</span>
-                    <span class="dot">.</span>
-                    <span class="dot">.</span>
+        <div class="loader-terminal">
+            <div class="terminal-header">
+                <div class="terminal-controls">
+                    <span class="control-dot control-close"></span>
+                    <span class="control-dot control-minimize"></span>
+                    <span class="control-dot control-maximize"></span>
                 </div>
+                <div class="terminal-title">portfolio.ts — Terminal</div>
             </div>
-            <div class="loader-progress-container">
-                <div class="loader-bar">
-                    <div class="loader-progress" id="loaderProgress"></div>
-                    <div class="loader-progress-shine"></div>
+            <div class="terminal-body">
+                <div class="terminal-line">
+                    <span class="terminal-prompt">$</span>
+                    <span class="terminal-command" id="terminalCommand">npm run dev</span>
+                    <span class="terminal-cursor">█</span>
                 </div>
-                <div class="loader-percentage" id="loaderPercentage">0%</div>
-            </div>
-            <div class="loader-tech-stack">
-                <span class="tech-item">iOS</span>
-                <span class="tech-item">React</span>
-                <span class="tech-item">Swift</span>
-                <span class="tech-item">Node.js</span>
+                <div class="terminal-output" id="terminalOutput">
+                    <div class="output-line">Starting development server...</div>
+                    <div class="output-line">Compiling TypeScript...</div>
+                    <div class="output-line">Building components...</div>
+                </div>
+                <div class="loader-progress-container">
+                    <div class="terminal-progress-label">Loading:</div>
+                    <div class="loader-bar">
+                        <div class="loader-progress" id="loaderProgress"></div>
+                    </div>
+                    <div class="loader-percentage" id="loaderPercentage">0%</div>
+                </div>
+                <div class="terminal-status">
+                    <span class="status-item">✓ TypeScript</span>
+                    <span class="status-item">✓ React</span>
+                    <span class="status-item">✓ Swift</span>
+                    <span class="status-item">✓ Node.js</span>
+                </div>
             </div>
         </div>
     </div>
@@ -163,9 +165,9 @@
                 <div class="skill-badge">JavaScript</div>
                 <div class="skill-badge">TypeScript</div>
                 <div class="skill-badge">HTML/CSS</div>
-                <div class="skill-badge" style="background: var(--accent-pink);">React</div>
-                <div class="skill-badge" style="background: var(--accent-yellow);">Node.js</div>
-                <div class="skill-badge" style="background: var(--accent-teal);">PostgreSQL</div>
+                <div class="skill-badge skill-react">React</div>
+                <div class="skill-badge skill-node">Node.js</div>
+                <div class="skill-badge skill-postgres">PostgreSQL</div>
                 <div class="skill-badge">Git</div>
                 <div class="skill-badge">Xcode</div>
                 <div class="skill-badge">Figma</div>
@@ -366,7 +368,7 @@
         <div class="container">
             <h2 class="section-title">My Resume</h2>
             <div class="hero-description"
-                style="width: 100%; max-width: 100%; text-align: center; background: white; margin-bottom: 2rem;">
+                style="width: 100%; max-width: 100%; text-align: center; background: var(--card-bg); margin-bottom: 2rem; color: #c0caf5;">
                 <p>Ready to collaborate? Check out my full professional history.</p>
                 <br>
                 <a href="Resume.pdf" download class="btn btn-primary">Download PDF</a>

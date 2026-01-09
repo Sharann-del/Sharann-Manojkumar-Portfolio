@@ -12,28 +12,50 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.add('loaded');
         sessionStorage.removeItem('pageTransition');
     } else if (siteLoader) {
-        // Advanced loader animations for first load
-        const loaderText = document.getElementById('loaderText');
+        // Terminal-themed loader animations
+        const terminalCommand = document.getElementById('terminalCommand');
+        const terminalOutput = document.getElementById('terminalOutput');
         const loaderPercentage = document.getElementById('loaderPercentage');
         const loaderProgress = document.getElementById('loaderProgress');
         
-        // Split text into individual letters for animation
-        if (loaderText) {
-            const text = loaderText.textContent;
-            loaderText.innerHTML = text.split('').map((char, index) => {
-                if (char === ' ') {
-                    return '<span style="width: 0.2em; display: inline-block;"></span>';
+        // Typewriter effect for terminal command
+        if (terminalCommand) {
+            const commands = ['npm run dev', 'yarn build', 'tsc --watch'];
+            let commandIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            
+            const typeCommand = () => {
+                const currentCommand = commands[commandIndex];
+                
+                if (!isDeleting && charIndex < currentCommand.length) {
+                    terminalCommand.textContent = currentCommand.substring(0, charIndex + 1);
+                    charIndex++;
+                    setTimeout(typeCommand, 100);
+                } else if (isDeleting && charIndex > 0) {
+                    terminalCommand.textContent = currentCommand.substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(typeCommand, 50);
+                } else if (!isDeleting && charIndex === currentCommand.length) {
+                    setTimeout(() => {
+                        isDeleting = true;
+                        typeCommand();
+                    }, 1000);
+                } else {
+                    isDeleting = false;
+                    commandIndex = (commandIndex + 1) % commands.length;
+                    setTimeout(typeCommand, 500);
                 }
-                return `<span>${char}</span>`;
-            }).join('');
+            };
+            
+            setTimeout(typeCommand, 500);
         }
         
-        // Animate percentage counter
+        // Animate percentage counter with terminal style
         if (loaderPercentage && loaderProgress) {
             let progress = 0;
             const duration = 2000; // 2 seconds
-            const startTime = Date.now() + 1800; // Start after 1.8s delay
-            const interval = 16; // ~60fps
+            const startTime = Date.now() + 2000; // Start after 2s delay
             
             const updateProgress = () => {
                 const elapsed = Date.now() - startTime;
@@ -75,28 +97,70 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Custom Cursor
+// Advanced Custom Cursor - Dev Theme with Trailing Effects
 const createCustomCursor = () => {
     // Only create cursor on desktop
     if (window.innerWidth <= 768) return;
 
-    // Create yellow square cursor
+    // Create main cursor
     const cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
     document.body.appendChild(cursor);
 
-    // Update cursor position
-    function updateCursorPosition(x, y) {
-        cursor.style.left = (x - 15) + 'px';  // -15 is half of 30px width
-        cursor.style.top = (y - 15) + 'px';
+    // Cursor position tracking
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+    let trailCount = 0;
+    let lastTrailTime = 0;
+
+    // Smooth cursor following with easing
+    function animateCursor() {
+        const dx = mouseX - cursorX;
+        const dy = mouseY - cursorY;
+        
+        // Smooth easing
+        cursorX += dx * 0.15;
+        cursorY += dy * 0.15;
+        
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        
+        requestAnimationFrame(animateCursor);
     }
 
     // Track mouse position
     document.addEventListener('mousemove', (e) => {
-        updateCursorPosition(e.clientX, e.clientY);
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        // Create trail dots with throttling
+        const now = Date.now();
+        if (now - lastTrailTime > 30) { // Create trail every 30ms
+            createTrail(e.clientX, e.clientY);
+            lastTrailTime = now;
+        }
     });
 
-    // Interactive elements - cursor becomes translucent
+    // Create trailing effect dots
+    function createTrail(x, y) {
+        const trail = document.createElement('div');
+        trail.className = 'cursor-trail';
+        trail.style.left = x + 'px';
+        trail.style.top = y + 'px';
+        document.body.appendChild(trail);
+
+        // Remove trail after animation
+        setTimeout(() => {
+            trail.remove();
+        }, 600);
+    }
+
+    // Start animation loop
+    animateCursor();
+
+    // Interactive elements - cursor expands and changes color
     const hoverElements = document.querySelectorAll('a, button, .btn, .nav-link, .project-card, .project-card-expanded, .about-card-expanded, .experience-card-expanded, .skill-badge, .back-to-top, .mobile-menu-toggle, .project-link, .project-link-expanded, .nav-logo a, .experience-item, .dev-box, .resume-preview');
 
     hoverElements.forEach(el => {
@@ -109,6 +173,24 @@ const createCustomCursor = () => {
             cursor.classList.remove('cursor-hover');
             el.classList.remove('cursor-target-active');
         });
+    });
+
+    // Click effect
+    document.addEventListener('mousedown', () => {
+        cursor.classList.add('cursor-click');
+    });
+
+    document.addEventListener('mouseup', () => {
+        cursor.classList.remove('cursor-click');
+    });
+
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', () => {
+        cursor.style.opacity = '0';
+    });
+
+    document.addEventListener('mouseenter', () => {
+        cursor.style.opacity = '1';
     });
 
     // Hide cursor when leaving window
@@ -266,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Typewriter Effect
+    // Typewriter Effect with Dev Theme
     const typeTarget = document.getElementById('typewriter-text');
     if (typeTarget) {
         const phrases = ['IOS APP DEVELOPER', 'FULL-STACK WEB DEVELOPER'];
@@ -303,7 +385,116 @@ document.addEventListener('DOMContentLoaded', () => {
         // Start after a short delay
         setTimeout(type, 1000);
     }
+
+    // Removed code particle effects for cleaner look
+
+    // Terminal-style Notification System
+    function showTerminalNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = 'terminal-notification';
+        notification.style.cssText = `
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: rgba(26, 27, 38, 0.9);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 2px solid ${type === 'success' ? 'rgba(158, 206, 106, 0.4)' : 'rgba(122, 162, 247, 0.4)'};
+            padding: 1rem 1.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: ${type === 'success' ? '#9ece6a' : '#7aa2f7'};
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 20px ${type === 'success' ? 'rgba(158, 206, 106, 0.2)' : 'rgba(122, 162, 247, 0.2)'};
+            z-index: 10001;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-radius: 4px;
+        `;
+        notification.innerHTML = `<span style="color: #9ece6a; margin-right: 0.5rem;">✓</span>${message}`;
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            notification.style.opacity = '1';
+            notification.style.transform = 'translateX(0)';
+        }, 10);
+
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateX(100px)';
+            setTimeout(() => notification.remove(), 400);
+        }, 3000);
+    }
+
+    // Removed section scroll notifications for cleaner experience
+
+    // Removed button click notifications for cleaner experience
+
+    // Removed glitch animation for cleaner look
+
+    // Removed line numbers for cleaner look
+
+    // Removed status indicator for cleaner look
+
+    // Code-like Variable Declaration Effect
+    document.querySelectorAll('.project-name-expanded, .about-card-name-expanded, .experience-name-expanded').forEach(name => {
+        name.addEventListener('mouseenter', function() {
+            this.style.textShadow = '0 0 20px currentColor, 0 0 30px currentColor';
+        });
+
+        name.addEventListener('mouseleave', function() {
+            this.style.textShadow = '';
+        });
+    });
+
+    // Terminal-style Command History
+    const commandHistory = [];
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey || e.metaKey) {
+            if (e.key === 'k') {
+                e.preventDefault();
+                showTerminalNotification('Terminal cleared', 'info');
+            }
+        }
+    });
+
+    // IDE-style Auto-complete on Nav Links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            const section = this.getAttribute('data-section');
+            if (section) {
+                this.setAttribute('title', `Navigate to ${section} section`);
+            }
+        });
+    });
+
+    // Code-like Function Call Animation
+    document.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.style.animation = 'successFlash 0.3s ease';
+            setTimeout(() => {
+                this.style.animation = '';
+            }, 300);
+        });
+    });
+
+    // Removed process indicators for cleaner look
 });
+
+// Add process pulse animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes processPulse {
+        0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.5;
+            transform: scale(1.2);
+        }
+    }
+`;
+document.head.appendChild(style);
 
 // Smooth Scroll for internal anchors
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
