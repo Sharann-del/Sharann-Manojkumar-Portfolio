@@ -11,43 +11,76 @@
 
 <body>
     <div class="site-loader" id="siteLoader">
-        <div class="loader-terminal">
-            <div class="terminal-header">
-                <div class="terminal-controls">
-                    <span class="control-dot control-close"></span>
-                    <span class="control-dot control-minimize"></span>
-                    <span class="control-dot control-maximize"></span>
+        <!-- macOS Code Editor Window -->
+        <div class="macos-window" id="codeEditorWindow">
+            <div class="macos-titlebar">
+                <div class="macos-controls">
+                    <span class="macos-close"></span>
+                    <span class="macos-minimize"></span>
+                    <span class="macos-maximize"></span>
+                </div>
+                <div class="macos-title">index.html — Visual Studio Code</div>
+            </div>
+            <div class="macos-window-body">
+                <div class="code-content" id="codeContent">
+                    <pre class="code-text" id="codeText"></pre>
+                    <span class="typing-cursor" id="typingCursor">█</span>
+                </div>
+            </div>
         </div>
-                <div class="terminal-title">portfolio.ts — Terminal</div>
-            </div>
-            <div class="terminal-body">
-                <div class="terminal-line">
-                    <span class="terminal-prompt">$</span>
-                    <span class="terminal-command" id="terminalCommand">npm run dev</span>
-                    <span class="terminal-cursor">█</span>
+        
+        <!-- Build Terminal Window -->
+        <div class="macos-window build-window" id="buildWindow">
+            <div class="macos-titlebar">
+                <div class="macos-controls">
+                    <span class="macos-close"></span>
+                    <span class="macos-minimize"></span>
+                    <span class="macos-maximize"></span>
                 </div>
-                <div class="terminal-output" id="terminalOutput">
-                    <div class="output-line">Starting development server...</div>
-                    <div class="output-line">Compiling TypeScript...</div>
-                    <div class="output-line">Building components...</div>
+                <div class="macos-title">Terminal — Building Portfolio</div>
             </div>
-            <div class="loader-progress-container">
-                    <div class="terminal-progress-label">Loading:</div>
-                <div class="loader-bar">
-                    <div class="loader-progress" id="loaderProgress"></div>
+            <div class="macos-window-body">
+                <div class="build-output" id="buildOutput"></div>
+                <div class="build-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">0%</div>
                 </div>
-                <div class="loader-percentage" id="loaderPercentage">0%</div>
             </div>
-                <div class="terminal-status">
-                    <span class="status-item">✓ TypeScript</span>
-                    <span class="status-item">✓ React</span>
-                    <span class="status-item">✓ Swift</span>
-                    <span class="status-item">✓ Node.js</span>
+        </div>
+        
+        <!-- Chrome Browser Window -->
+        <div class="chrome-window" id="chromeWindow">
+            <div class="chrome-toolbar">
+                <div class="chrome-controls">
+                    <span class="chrome-close"></span>
+                    <span class="chrome-minimize"></span>
+                    <span class="chrome-maximize"></span>
+                </div>
+                <div class="chrome-nav">
+                    <div class="chrome-nav-buttons">
+                        <button class="chrome-nav-btn">←</button>
+                        <button class="chrome-nav-btn">→</button>
+                        <button class="chrome-nav-btn">↻</button>
+                    </div>
+                    <div class="chrome-address-bar-container">
+                        <div class="chrome-address-bar" id="chromeAddressBar">
+                            <span class="chrome-lock-icon"></span>
+                            <span class="chrome-url-text" id="chromeUrlText"></span>
+                        </div>
+                    </div>
+                    <div class="chrome-menu">⋮</div>
+                </div>
+            </div>
+            <div class="chrome-content" id="chromeContent">
+                <div class="chrome-loading" id="chromeLoading">
+                    <div class="chrome-loading-spinner"></div>
+                    <div class="chrome-loading-text">Loading sharann.dev...</div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="scroll-progress" id="scrollProgress"></div>
     <nav class="navbar">
         <div class="container nav-container">
             <div class="nav-logo">
@@ -375,7 +408,7 @@
             </div>
 
             <div class="resume-preview">
-                <iframe src="Resume.pdf#view=FitH&toolbar=0" class="resume-iframe" title="Resume Preview"></iframe>
+                <iframe src="Resume.pdf#view=FitH&toolbar=0&zoom=page-width" class="resume-iframe" title="Resume Preview"></iframe>
             </div>
         </div>
     </section>
@@ -391,3 +424,4 @@
 </body>
 
 </html>
+                        
