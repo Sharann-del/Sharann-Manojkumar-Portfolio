@@ -11,73 +11,36 @@
 
 <body>
     <div class="site-loader" id="siteLoader">
-        <!-- macOS Code Editor Window -->
-        <div class="macos-window" id="codeEditorWindow">
-            <div class="macos-titlebar">
-                <div class="macos-controls">
-                    <span class="macos-close"></span>
-                    <span class="macos-minimize"></span>
-                    <span class="macos-maximize"></span>
-                </div>
-                <div class="macos-title">index.html — Visual Studio Code</div>
-            </div>
-            <div class="macos-window-body">
-                <div class="code-content" id="codeContent">
-                    <pre class="code-text" id="codeText"></pre>
-                    <span class="typing-cursor" id="typingCursor">█</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Build Terminal Window -->
-        <div class="macos-window build-window" id="buildWindow">
-            <div class="macos-titlebar">
-                <div class="macos-controls">
-                    <span class="macos-close"></span>
-                    <span class="macos-minimize"></span>
-                    <span class="macos-maximize"></span>
-                </div>
-                <div class="macos-title">Terminal — Building Portfolio</div>
-            </div>
-            <div class="macos-window-body">
-                <div class="build-output" id="buildOutput"></div>
-                <div class="build-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <div class="progress-text" id="progressText">0%</div>
+        <!-- Minimal Typography Loader -->
+        <div class="loader-content">
+            <!-- Main Text with Typewriter -->
+            <div class="loader-text-container">
+                <div class="loader-main-text" id="loaderMainText">
+                    <span class="text-char" data-char="P"></span>
+                    <span class="text-char" data-char="O"></span>
+                    <span class="text-char" data-char="R"></span>
+                    <span class="text-char" data-char="T"></span>
+                    <span class="text-char" data-char="F"></span>
+                    <span class="text-char" data-char="O"></span>
+                    <span class="text-char" data-char="L"></span>
+                    <span class="text-char" data-char="I"></span>
+                    <span class="text-char" data-char="O"></span>
+                    <span class="typing-cursor-loader" id="typingCursorLoader">_</span>
                 </div>
             </div>
-        </div>
-        
-        <!-- Chrome Browser Window -->
-        <div class="chrome-window" id="chromeWindow">
-            <div class="chrome-toolbar">
-                <div class="chrome-controls">
-                    <span class="chrome-close"></span>
-                    <span class="chrome-minimize"></span>
-                    <span class="chrome-maximize"></span>
-                </div>
-                <div class="chrome-nav">
-                    <div class="chrome-nav-buttons">
-                        <button class="chrome-nav-btn">←</button>
-                        <button class="chrome-nav-btn">→</button>
-                        <button class="chrome-nav-btn">↻</button>
-                    </div>
-                    <div class="chrome-address-bar-container">
-                        <div class="chrome-address-bar" id="chromeAddressBar">
-                            <span class="chrome-lock-icon"></span>
-                            <span class="chrome-url-text" id="chromeUrlText"></span>
-                        </div>
-                    </div>
-                    <div class="chrome-menu">⋮</div>
+            
+            <!-- Minimal Loading Bar -->
+            <div class="loader-bar-container">
+                <div class="loader-bar-track">
+                    <div class="loader-bar-fill" id="loaderBarFill"></div>
                 </div>
             </div>
-            <div class="chrome-content" id="chromeContent">
-                <div class="chrome-loading" id="chromeLoading">
-                    <div class="chrome-loading-spinner"></div>
-                    <div class="chrome-loading-text">Loading sharann.dev...</div>
-                </div>
+            
+            <!-- Subtle Info -->
+            <div class="loader-info" id="loaderInfo">
+                <span class="loader-name-text">Sharann Manojkumar</span>
+                <span class="loader-divider">/</span>
+                <span class="loader-role">Developer</span>
             </div>
         </div>
     </div>
