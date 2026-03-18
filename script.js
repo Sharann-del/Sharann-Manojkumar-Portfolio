@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Advanced Custom Cursor - Dev Theme with Trailing Effects
+// Custom Cursor - Minimal design
 const createCustomCursor = () => {
     // Only create cursor on desktop
     if (window.innerWidth <= 768) return;
@@ -107,7 +107,6 @@ const createCustomCursor = () => {
     let mouseY = 0;
     let cursorX = 0;
     let cursorY = 0;
-    let lastTrailTime = 0;
 
     // Smooth cursor following with easing
     function animateCursor() {
@@ -115,8 +114,8 @@ const createCustomCursor = () => {
         const dy = mouseY - cursorY;
         
         // Smooth easing
-        cursorX += dx * 0.15;
-        cursorY += dy * 0.15;
+        cursorX += dx * 0.2;
+        cursorY += dy * 0.2;
         
         cursor.style.left = cursorX + 'px';
         cursor.style.top = cursorY + 'px';
@@ -128,28 +127,7 @@ const createCustomCursor = () => {
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-
-        // Create trail dots with throttling
-        const now = Date.now();
-        if (now - lastTrailTime > 30) { // Create trail every 30ms
-            createTrail(e.clientX, e.clientY);
-            lastTrailTime = now;
-        }
     });
-
-    // Create trailing effect dots
-    function createTrail(x, y) {
-        const trail = document.createElement('div');
-        trail.className = 'cursor-trail';
-        trail.style.left = x + 'px';
-        trail.style.top = y + 'px';
-        document.body.appendChild(trail);
-
-        // Remove trail after animation
-        setTimeout(() => {
-            trail.remove();
-        }, 600);
-    }
 
     // Start animation loop
     animateCursor();
@@ -231,11 +209,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Subtle Parallax Effect
+    // Hero image stays static - no parallax
     function parallaxEffect() {
-        const scrolled = window.pageYOffset;
-        if (heroImage && scrolled < window.innerHeight) {
-            heroImage.style.transform = `translateY(${scrolled * 0.3}px) rotate(0deg)`;
+        if (heroImage) {
+            heroImage.style.transform = 'none';
         }
     }
 
@@ -286,6 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial update
     updateActiveNavLink();
+    parallaxEffect();
 
     // Mobile Menu Toggle
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
@@ -426,16 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Removed status indicator for cleaner look
 
-    // Code-like Variable Declaration Effect
-    document.querySelectorAll('.project-name-expanded, .about-card-name-expanded, .experience-name-expanded').forEach(name => {
-        name.addEventListener('mouseenter', function() {
-            this.style.textShadow = '0 0 20px currentColor, 0 0 30px currentColor';
-        });
-
-        name.addEventListener('mouseleave', function() {
-            this.style.textShadow = '';
-        });
-    });
+    // Removed text glow on title hover
 
     // Terminal-style Command History
     const commandHistory = [];
