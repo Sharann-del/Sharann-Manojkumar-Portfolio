@@ -214,7 +214,7 @@
     /* ═══════════════ HERO ═══════════════ */
     .hero {
       min-height: 100vh;
-      padding: 100px 48px 60px;
+      padding: 128px 48px 60px;
       display: flex; flex-direction: column; justify-content: center;
     }
     .hero-inner { max-width: 1160px; margin: 0 auto; }
@@ -297,7 +297,7 @@
       transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, color 0.2s ease, background 0.2s ease;
     }
     .fcard:hover, .sk-card:hover, .gh-stat:hover, .edu-extra:hover, .resume-page:hover {
-      transform: translateY(-3px);
+      transform: none;
       border-color: var(--muted);
       box-shadow: 0 10px 26px rgba(17,17,17,0.07);
     }
@@ -493,7 +493,7 @@
       display: flex; flex-direction: column; gap: 14px;
       transition: transform 0.18s, border-color 0.18s;
     }
-    .pc:hover { transform: translateY(-2px); border-color: var(--muted); }
+    .pc:hover { transform: none; border-color: var(--muted); }
 
     .pc-top {
       display: flex; justify-content: space-between; align-items: center;
@@ -644,7 +644,7 @@
       display: flex; flex-direction: column; gap: 10px;
       transition: border-color 0.2s, transform 0.18s;
     }
-    .repo-card:hover { border-color: var(--muted); transform: translateY(-2px); }
+    .repo-card:hover { border-color: var(--muted); transform: none; }
     .repo-name {
       font-size: 14px; font-weight: 700; color: var(--text);
       display: flex; align-items: center; gap: 7px;
@@ -904,6 +904,15 @@
     }
     .cl.primary { background: var(--blue); color: white; border-color: var(--blue); }
     .cl.primary:hover { background: #1D4ED8; }
+    body.dark-mode .cl.primary {
+      background: #2563EB;
+      border-color: #2563EB;
+      color: white;
+    }
+    body.dark-mode .cl.primary:hover {
+      background: #1D4ED8;
+      border-color: #1D4ED8;
+    }
     .cl.ghost {
       background: transparent;
       color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.15);
@@ -1336,7 +1345,7 @@
           <span class="pc-tag">MCP</span>
         </div>
         <div class="pc-links">
-          <a href="https://kern-alpha.vercel.app/" target="_blank" class="pc-link" onclick="event.stopPropagation()">Live Demo</a>
+          <a href="https://kern-alpha.vercel.app/" target="_blank" class="pc-link" onclick="event.stopPropagation()">Deployed</a>
           <a href="https://github.com/Sharann-del/Kern" target="_blank" class="pc-link" onclick="event.stopPropagation()">GitHub</a>
         </div>
       </div>
@@ -1353,7 +1362,7 @@
           <span class="pc-tag">TUI</span><span class="pc-tag">Supabase</span>
         </div>
         <div class="pc-links">
-          <a href="https://cosmos-tui.app" target="_blank" class="pc-link" onclick="event.stopPropagation()">cosmos-tui.app</a>
+          <a href="https://cosmos-tui.app" target="_blank" class="pc-link" onclick="event.stopPropagation()">Deployed</a>
           <a href="https://github.com/Sharann-del/Cosmos" target="_blank" class="pc-link" onclick="event.stopPropagation()">GitHub</a>
         </div>
       </div>
