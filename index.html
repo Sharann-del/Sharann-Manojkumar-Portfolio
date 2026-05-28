@@ -1769,13 +1769,7 @@
     });
   }
 
-  /* ── Always start at top on fresh load ── */
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.addEventListener('DOMContentLoaded', () => {
-    if (window.location.hash === '#resume') {
-      history.replaceState(null, '', window.location.pathname + window.location.search);
-    }
-    window.scrollTo(0, 0);
     initGraphToggle();
     initThemeToggle();
     initSiteMotion();
