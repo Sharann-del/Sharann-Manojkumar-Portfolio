@@ -195,7 +195,7 @@
       border-color: var(--muted);
       transform: translateY(-1px);
     }
-    body.dark-mode .hero-name .grey { color: #8A8A8F; }
+    body.dark-mode .hero-name .grey { color: #F5F5F5; }
     body.dark-mode .ld-sub { color: #A1A1AA; }
     body.dark-mode #contact {
       background: #050505;
@@ -218,15 +218,27 @@
       display: flex; flex-direction: column; justify-content: center;
     }
     .hero-inner { max-width: 1160px; margin: 0 auto; }
+    body.is-loading .hero-inner {
+      opacity: 0;
+      transform: translateY(18px);
+      filter: blur(6px);
+    }
+    body:not(.is-loading) .hero-inner {
+      animation: heroIntro 0.9s cubic-bezier(0.16,1,0.3,1) 0.08s both;
+    }
+    @keyframes heroIntro {
+      from { opacity: 0; transform: translateY(18px); filter: blur(6px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
 
     .hero-name {
-      font-size: clamp(56px, 10.5vw, 148px);
+      font-size: clamp(64px, 12vw, 166px);
       font-weight: 800; letter-spacing: -0.045em;
       line-height: 0.88; color: var(--text); margin-bottom: 28px;
       max-width: 100%;
       overflow-wrap: anywhere;
     }
-    .hero-name .grey { color: #404040; }
+    .hero-name .grey { color: var(--text); }
 
     .hero-meta {
       display: flex;
@@ -239,11 +251,11 @@
       display: inline-flex;
       align-items: center;
       gap: 0;
-      padding: 7px 14px;
+      padding: 8px 15px;
       border-radius: 99px;
       border: 1.5px solid var(--border);
       background: var(--white);
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.01em;
       color: var(--text);
@@ -255,9 +267,9 @@
 
     .hero-desc {
       max-width: 760px;
-      font-size: 16px;
+      font-size: 19px;
       color: var(--muted);
-      line-height: 1.82;
+      line-height: 1.76;
       margin-bottom: 36px;
       margin-left: 6px;
       padding-left: 0;
@@ -396,6 +408,21 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
+    .badge-wall {
+      border: 1.5px solid var(--border);
+      border-radius: var(--r);
+      background: var(--white);
+      padding: 20px;
+      line-height: 0;
+    }
+    .badge-wall p { margin: 0; }
+    .badge-wall img {
+      margin: 0 6px 8px 0;
+      vertical-align: middle;
+      height: 28px;
+      width: auto;
+      max-width: 100%;
+    }
 
     .sk-card {
       border: 1.5px solid var(--border);
@@ -426,12 +453,26 @@
 
     .sk-pills { display: flex; flex-wrap: wrap; gap: 7px; }
     .sk-pill {
-      font-size: 12px; font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 8px;
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #F9FAFB;
+      background: #1F2937;
+      line-height: 1.1;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+    }
+    .sk-card.sk-lang .sk-pill { background: #0F4C81; }
+    .sk-card.sk-frontend .sk-pill { background: #0F766E; }
+    .sk-card.sk-backend .sk-pill { background: #1D4ED8; }
+    .sk-card.sk-tools .sk-pill { background: #B45309; }
+    .sk-card.sk-special .sk-pill { background: #BE185D; }
+    .sk-card.sk-mobile .sk-pill { background: #0E7490; }
+    .sk-card .sk-pill:hover {
+      filter: brightness(1.06);
     }
 
     /* ═══════════════ EXPERIENCE ═══════════════ */
@@ -1068,6 +1109,8 @@
       .focus-cards { grid-template-columns: 1fr; }
       .proj-grid { grid-template-columns: 1fr; }
       .repos-grid { grid-template-columns: 1fr; }
+      .badge-wall { padding: 14px; }
+      .badge-wall img { height: 24px; margin: 0 4px 6px 0; }
       .gh-stats {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1078,12 +1121,12 @@
       .theme-toggle { min-width: 66px; height: 32px; padding: 0 10px; }
       section { padding: 64px 24px; }
       .hero { padding: 110px 24px 60px; }
-      .hero-name { font-size: clamp(46px, 14vw, 82px); }
+      .hero-name { font-size: clamp(52px, 15vw, 94px); }
       .hero-meta { gap: 8px; margin-bottom: 14px; }
-      .hero-pill { font-size: 11px; padding: 6px 11px; }
+      .hero-pill { font-size: 12px; padding: 7px 12px; }
       .hero-desc {
-        font-size: 14px;
-        line-height: 1.72;
+        font-size: 16px;
+        line-height: 1.7;
         margin-left: 4px;
         padding-left: 0;
       }
@@ -1110,10 +1153,10 @@
       nav { padding: 0 16px; }
       section { padding: 56px 16px; }
       .hero { padding: 104px 16px 48px; }
-      .hero-name { font-size: clamp(36px, 12.5vw, 60px); line-height: 0.9; margin-bottom: 20px; }
+      .hero-name { font-size: clamp(42px, 13.5vw, 68px); line-height: 0.9; margin-bottom: 20px; }
       .hero-meta { margin-bottom: 12px; }
-      .hero-pill { font-size: 10px; padding: 6px 10px; }
-      .hero-desc { font-size: 13px; line-height: 1.68; margin-left: 0; }
+      .hero-pill { font-size: 11px; padding: 6px 10px; }
+      .hero-desc { font-size: 15px; line-height: 1.66; margin-left: 0; }
       .sec-title { margin-bottom: 36px; }
       .gh-stats { grid-template-columns: 1fr; }
       .gh-graph-card { padding: 14px; }
@@ -1268,66 +1311,7 @@
   <div class="wrap">
     <p class="sec-eyebrow">Technical Skills</p>
     <h2 class="sec-title">What I Work With</h2>
-    <div class="skills-grid">
-
-      <div class="sk-card">
-        <div class="sk-head"><span class="sk-dot dot-blue"></span><span class="sk-name">Languages</span></div>
-        <div class="sk-pills">
-          <span class="sk-pill">Swift</span><span class="sk-pill">TypeScript</span>
-          <span class="sk-pill">JavaScript</span><span class="sk-pill">Dart</span>
-          <span class="sk-pill">Python</span><span class="sk-pill">Java</span>
-          <span class="sk-pill">C++</span><span class="sk-pill">C</span>
-        </div>
-      </div>
-
-      <div class="sk-card">
-        <div class="sk-head"><span class="sk-dot dot-green"></span><span class="sk-name">Frontend</span></div>
-        <div class="sk-pills">
-          <span class="sk-pill">React</span><span class="sk-pill">SwiftUI</span>
-          <span class="sk-pill">Flutter</span><span class="sk-pill">HTML / CSS</span>
-          <span class="sk-pill">React Flow</span><span class="sk-pill">WidgetKit</span>
-        </div>
-      </div>
-
-      <div class="sk-card">
-        <div class="sk-head"><span class="sk-dot dot-violet"></span><span class="sk-name">Backend</span></div>
-        <div class="sk-pills">
-          <span class="sk-pill">Node.js</span><span class="sk-pill">Express</span>
-          <span class="sk-pill">PostgreSQL</span><span class="sk-pill">Supabase</span>
-          <span class="sk-pill">FastAPI</span><span class="sk-pill">JWT Auth</span>
-          <span class="sk-pill">REST APIs</span>
-        </div>
-      </div>
-
-      <div class="sk-card">
-        <div class="sk-head"><span class="sk-dot dot-amber"></span><span class="sk-name">Tools</span></div>
-        <div class="sk-pills">
-          <span class="sk-pill">Git</span><span class="sk-pill">Xcode</span>
-          <span class="sk-pill">Postman</span><span class="sk-pill">Figma</span>
-          <span class="sk-pill">Vercel</span><span class="sk-pill">Homebrew</span>
-        </div>
-      </div>
-
-      <div class="sk-card">
-        <div class="sk-head"><span class="sk-dot dot-rose"></span><span class="sk-name">Specialized</span></div>
-        <div class="sk-pills">
-          <span class="sk-pill">MCP Servers</span><span class="sk-pill">JSONB Design</span>
-          <span class="sk-pill">PostGIS</span><span class="sk-pill">TUI / CLI Dev</span>
-          <span class="sk-pill">OpenAI API</span><span class="sk-pill">OpenRouter</span>
-          <span class="sk-pill">GeoTIFF / NDVI</span>
-        </div>
-      </div>
-
-      <div class="sk-card">
-        <div class="sk-head"><span class="sk-dot dot-teal"></span><span class="sk-name">iOS / Mobile</span></div>
-        <div class="sk-pills">
-          <span class="sk-pill">SwiftUI</span><span class="sk-pill">Core Data</span>
-          <span class="sk-pill">WidgetKit</span><span class="sk-pill">Notion API</span>
-          <span class="sk-pill">Flutter</span><span class="sk-pill">Dart</span>
-        </div>
-      </div>
-
-    </div>
+    <div class="badge-wall" id="tech-badges"></div>
   </div>
 </section>
 
@@ -1678,6 +1662,18 @@
 </div>
 
 <script>
+  const TECH_BADGES_MD = `![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white) ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white) ![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![LaTeX](https://img.shields.io/badge/latex-%23008080.svg?style=for-the-badge&logo=latex&logoColor=white) ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white) ![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![R](https://img.shields.io/badge/r-%23276DC3.svg?style=for-the-badge&logo=r&logoColor=white) ![Swift](https://img.shields.io/badge/swift-F54A2A?style=for-the-badge&logo=swift&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![Windows Terminal](https://img.shields.io/badge/Windows%20Terminal-%234D4D4D.svg?style=for-the-badge&logo=windows-terminal&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase) ![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white) ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7) ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white) ![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white) ![Angular.js](https://img.shields.io/badge/angular.js-%23E23237.svg?style=for-the-badge&logo=angularjs&logoColor=white) ![Bun](https://img.shields.io/badge/Bun-%23000000.svg?style=for-the-badge&logo=bun&logoColor=white) ![Electron.js](https://img.shields.io/badge/Electron-191970?style=for-the-badge&logo=Electron&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi) ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white) ![Handlebars](https://img.shields.io/badge/Handlebars-%23000000?style=for-the-badge&logo=Handlebars.js&logoColor=white) ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens) ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![PNPM](https://img.shields.io/badge/pnpm-%234a4a4a.svg?style=for-the-badge&logo=pnpm&logoColor=f69220) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Streamlit](https://img.shields.io/badge/Streamlit-%23FE4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Tauri](https://img.shields.io/badge/tauri-%2324C8DB.svg?style=for-the-badge&logo=tauri&logoColor=%23FFFFFF) ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) ![Web3.js](https://img.shields.io/badge/web3.js-F16822?style=for-the-badge&logo=web3.js&logoColor=white) ![Firebase](https://img.shields.io/badge/firebase-a08021?style=for-the-badge&logo=firebase&logoColor=ffcd34) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white) ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white) ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white) ![Adobe Acrobat Reader](https://img.shields.io/badge/Adobe%20Acrobat%20Reader-EC1C24.svg?style=for-the-badge&logo=Adobe%20Acrobat%20Reader&logoColor=white) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white) ![Dribbble](https://img.shields.io/badge/Dribbble-EA4C89?style=for-the-badge&logo=dribbble&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Framer](https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue) ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white) ![Plotly](https://img.shields.io/badge/Plotly-%233F4F75.svg?style=for-the-badge&logo=plotly&logoColor=white) ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white) ![Cisco](https://img.shields.io/badge/cisco-%23049fd9.svg?style=for-the-badge&logo=cisco&logoColor=black) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white) ![Plex](https://img.shields.io/badge/plex-%23E5A00D.svg?style=for-the-badge&logo=plex&logoColor=white) ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white) ![Power Bi](https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=powerbi&logoColor=black) ![Prettier](https://img.shields.io/badge/prettier-%23F7B93E.svg?style=for-the-badge&logo=prettier&logoColor=black) ![TOR](https://img.shields.io/badge/tor-%237E4798.svg?style=for-the-badge&logo=tor-project&logoColor=white) ![Xbox](https://img.shields.io/badge/xbox-%23107C10.svg?style=for-the-badge&logo=xbox&logoColor=white)`;
+
+  function renderTechBadges() {
+    const root = document.getElementById('tech-badges');
+    if (!root) return;
+    if (typeof marked !== 'undefined' && marked.parseInline) {
+      root.innerHTML = marked.parseInline(TECH_BADGES_MD);
+    } else {
+      root.innerHTML = '<p style="color:var(--muted);font-size:14px;line-height:1.6">Could not load badge wall.</p>';
+    }
+  }
+
   const THEME_KEY = 'portfolio:theme';
   const GH_GRAPH_TYPE_KEY = 'portfolio:graphType';
   const GH_BOX_DARK_CACHE_KEY = 'portfolio:boxGraphDarkDataUrl:v1';
@@ -1817,6 +1813,7 @@
   }
 
   window.addEventListener('DOMContentLoaded', () => {
+    renderTechBadges();
     initGraphToggle();
     initThemeToggle();
     initSiteMotion();
