@@ -234,7 +234,7 @@ body.is-loaded .hero__photo { transform: translateY(0); }
 .mani__tag { position: absolute; bottom: 9svh; left: 0; right: 0; text-align: center; font-weight: 900; text-transform: uppercase; letter-spacing: .3em; font-size: 12px; }
 @media (max-width: 979px) {
   .mani__stage { height: auto; flex-direction: column; gap: 4vw; padding: 18vw 0; }
-  .mani__word { position: static; }
+  .mani__word { position: static; font-size: clamp(52px, 13vw, 200px); white-space: normal; text-align: center; }
   .mani__tag { display: none; }
 }
 
@@ -264,7 +264,10 @@ body.is-loaded .hero__photo { transform: translateY(0); }
 }
 .hm .l1 { background: #5C4D00; } .hm .l2 { background: #9A8200; }
 .hm .l3 { background: #CFAE00; } .hm .l4 { background: var(--yellow); }
-@media (max-width: 760px) { .hm { gap: 2px; } }
+@media (max-width: 760px) {
+  .hm { gap: 2px; overflow-x: auto; grid-template-rows: repeat(7, 10px); padding-bottom: 6px; }
+  .hm i { width: 10px; }
+}
 .hm-legend { display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: clamp(40px, 6vw, 80px); }
 .hm-legend i { width: 12px; height: 12px; display: inline-block; }
 .hm-legend .l0 { background: var(--soot); } .hm-legend .l1 { background: #5C4D00; }
@@ -386,6 +389,27 @@ body.is-loaded .hero__photo { transform: translateY(0); }
 
 .footer { background: var(--ink); color: var(--paper); border-top: 4px solid var(--paper); padding: 22px var(--gut) 70px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; font-size: 11px; }
 .footer b { color: var(--yellow); }
+
+/* ============ SMALL PHONES (≤ 480px) ============ */
+@media (max-width: 480px) {
+  /* Frame: prevent logo + menu from overlapping */
+  .frame__logo { font-size: 18px; padding: 8px 11px; top: 14px; left: 14px; box-shadow: 3px 3px 0 var(--red); }
+  .frame__menu { font-size: 11px; padding: 10px 15px; top: 14px; right: 14px; box-shadow: 3px 3px 0 var(--ink); }
+  .menu__close { font-size: 11px; padding: 10px 15px; top: 14px; right: 14px; }
+
+  /* Hero: scale name down further on very narrow screens */
+  .hero { padding-top: 70px; }
+  .hero__name { font-size: clamp(52px, 14vw, 340px); }
+
+  /* Reduce heavy box-shadows so they don't push layout on narrow screens */
+  .xp__card { box-shadow: 6px 6px 0 var(--ink); }
+  .contact__mail { box-shadow: 6px 6px 0 var(--red); }
+  .edu__body .pill { box-shadow: 4px 4px 0 var(--red); }
+}
+/* Stats: 1 column on truly tiny screens */
+@media (max-width: 360px) {
+  .gh__stats { grid-template-columns: 1fr; }
+}
 
 /* ============ MOTION SAFETY ============ */
 @media (prefers-reduced-motion: reduce) {
